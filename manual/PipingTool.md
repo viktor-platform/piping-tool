@@ -38,19 +38,14 @@
 - [Technische achtergrond](#Technische-achtergrond)
 
 # Introductie
-
 ## Inhoud document
-
 Dit document presenteert de handleiding voor de tool voor het bepalen van het faalmechanisme piping. Dit document is opgesteld als werkhandleiding voor het gebruik van de applicatie in VIKTOR.
 
 ## Wat is de Piping Tool?
-
 ---Nog te schrijven---
 
 ## Opbouw tool
-
 De tool is grofweg ingedeeld in een drietal niveaus:
-
 1.	Project
 2.	Dijkvak
 3.	Uittredepunt
@@ -72,9 +67,7 @@ Binnen een project kunnen één of meerdere dijkvakken worden aangemaakt. Deze d
 Binnen een dijkvak worden uittredepunten gedefinieerd. Alle uittredepunten behoren aan een dijkvak toe. Deze uittredepunten representeren locaties waarop een pipingcontroles plaatsvinden. Uittredepunten vormen ook de basis voor de 2D secties voor de terugschrijdende erosie en het genereren van een D-Geoflow file.
 
 ## Opbouw invoer
-
 De aanpak die wordt gehanteerd is gebaseerd op het zoveel mogelijk gebruik maken van beschikbare data in standaard formats. Dit gezien het voor de gebruiker vaak praktischer is om met invoerbestanden te werken dan grote hoeveelheid data handmatig in een applicatie invoeren. De minimaal benodigde invoer voor het uitvoeren van berekeningen met de tool is de volgende:
-
 1.	Kruinlijn van de dijk in .zip formaat. Zie [invoer kruinlijn](##Kruinlijn-van-de-dijk) .
 2.	Intredelijn in .zip formaat. Zie bijlage.
 3.	Grondparameters in .xlsx formaat conform vereiste layout. Zie bijlage.
@@ -88,13 +81,10 @@ Optionele invoerbestanden zijn:
 4.	Gegevens over sloten data gebaseerd op uitvoer van legger. Zie handleiding.
 
 ## Vragen en suggesties
-
 -- nog te doen --
 
 # Handleiding
-
 ## Navigeren in VIKTOR
-
 Navigeren in VIKTOR is gebruiksvriendelijk en kan op een aantal manieren. In de basis is het mogelijk om boven in het scherm van niveau te veranderen.
 
 ![Screenshot](./img/Navigeren_in_VIKTOR_1.png?csf=1&web=1&e=sIdfhqg)
@@ -118,7 +108,6 @@ Let op: Afhankelijk van de hoeveelheid data (e.g. sonderingen en uittredepunten)
 ---
 
 ## Stap 1: Aanmaken nieuw project
-
 In de tool is het mogelijk om een nieuw project aan te maken.
 
 Klik op de “[Projects](https://hdsr.viktor.ai/workspaces/1/app/object/1?entity_type=2&limit=10&offset=0&sort=updated_at%3Adesc])” map in de verkenner aan de linkerkant van het scherm. 
@@ -136,9 +125,7 @@ Het project krijgt als standaard dezelfde naam als het .zip bestand. Dit kan wor
 ![Screenshot](./img/Nieuw_project_aanmaken_3.png?csf=1&web=1&e=sIdfhqg)
 
 ## Stap 2: Laden van invoer bestanden (algemeen)
-
 ### 3D grondmodel
-
  Het 3D grondmodel is de basis van veel van de berekeningen. Het model is gebaseerd op de 3D modellen van TNO als opgesteld voor Sterke Lekdijk maar het is ook mogelijk om andere modellen te gebruiken mits deze in hetzelfde [formaat](##3D-grondmodel) worden gebruikt.
 
 Selecteer de “[Models](https://hdsr.viktor.ai/workspaces/1/app/object/2?entity_type=9&limit=10&offset=0&sort=updated_at%3Adesc) folder” en klik op de “Create” knop.
@@ -152,7 +139,6 @@ Sleep het 3D model naar het upload scherm. Het model krijgt als standaard dezelf
 De webapplicatie gaat wat minder goed om met grote bestanden. Daarnaast vragen deze bestanden veel geheugen. Het is mogelijk om een grote dataset [af te snijden](##Afsnijden_3D_grondmodel) in het gebied van interesse.
 
 ### Sonderingen
-
 Het is mogelijk om sonderingen toe te voegen aan het project. 
 
 Klik op de “[Projects](https://hdsr.viktor.ai/workspaces/1/app/object/1?entity_type=2&limit=10&offset=0&sort=updated_at%3Adesc])” map in de verkenner aan de linkerkant van het scherm en klik op de “Create” knop. Kies bij “Object Type” voor “CPT folder” en geef de folder een naam. Klik dan op “Create and browse”. Het is mogelijk om één of meerdere .gef of .xml bestanden tegelijk te uploaden.
@@ -160,7 +146,6 @@ Klik op de “[Projects](https://hdsr.viktor.ai/workspaces/1/app/object/1?entity
 ![Screenshot](./img/Invoer_3.png?csf=1&web=1&e=sIdfhqg)
 
 ### Boringen
-
 Het is mogelijk om boringen aan het project toe te voegen.
 
 Klik op de “[Projects](https://hdsr.viktor.ai/workspaces/1/app/object/1?entity_type=2&limit=10&offset=0&sort=updated_at%3Adesc])” map in de verkenner aan de linkerkant van het scherm. Klik op de “Create” knop. Kies bij “Object Type” voor “Boreholes folder” en geef de folder een naam. Klik dan op “Create and browse”. In de Boreholes folder klik op “create object” om sonderingen te uploaden. Het is mogelijk om één of meerdere .gef of bestanden tegelijk te uploaden.
@@ -168,7 +153,6 @@ Klik op de “[Projects](https://hdsr.viktor.ai/workspaces/1/app/object/1?entity
 ![Screenshot](./img/Invoer_4.png?csf=1&web=1&e=sIdfhqg)
 
 ## Stap 4: Van Project naar Dijkvak
-
 Binnen een project is het mogelijk om één of meerdere dijkvakken aan te maken.
 
 Selecteer het project en kies voor “[Open](https://hdsr.viktor.ai/workspaces/1/app/editor/1243)”.
@@ -210,7 +194,6 @@ In het tab "Genereren Dijkvakken" is het mogelijk een dijkvak aan te maken op ba
 Op het Dijkvakniveau is het mogelijk om, als de berekeningen zijn uitgevoerd, de data van het dijkvak te downloaden. Dit kan in het tab "Downloads".
 
 ## Stap 5: Van Dijkvak naar Uittredepunt
-
 Als een dijkvak is aangemaakt is de volgende stap om binnen dit dijkvak de uittredepunten te genereren waar de berekeningen worden uitgevoerd. Hiervoor is het nodig om op Dijkvakniveau keuzes te maken. 
 
 Om naar het zojuist aangemaakte Dijkvak te gaan is onder andere mogelijk om op projectniveau op het icoontje “Children” te klikken in de rechterbovenhoek. Dit geeft alle onderliggende onderdelen weer van het project. Kies hier voor “Dijkvak” en [open het gewenste dijkvak](https://hdsr.viktor.ai/workspaces/1/app/editor/1869).
@@ -218,7 +201,6 @@ Om naar het zojuist aangemaakte Dijkvak te gaan is onder andere mogelijk om op p
 ![Screenshot](./img/Step_5_1.png?csf=1&web=1&e=sIdfhqg)
 
 ### Tussenstap 1: Input selectie
-
 Nu opent het Dijkvak. In de bovenbalk is het ook mogelijk weer terug te gaan naar het projectniveau. In de viewer is het dijkvak in blauw te zien op de dijk. Het proces van dijkvak naar uittredepunten verloopt in een viertal tussenstappen die te zien zijn in de bovenkant van het scherm. Dit begint bij "Input selectie".
 
 In de eerste tab “Algemeen” is het mogelijk een aantal zaken te laten zien in het scherm alsmede de kilometrering van het dijkvak nog aan te passen en kan de weergave van sonderingen, boringen, grondmodel en sloten worden getoond. Standaard worden alle sloten getoond maar het is mogelijk om hier alleen de sloten in het geselecteerde achterland te laten zien.
@@ -252,7 +234,6 @@ Als laatste is het in deze tussenstap mogelijk om de sloten mee te nemen voor he
 ![Screenshot](./img/Step_5_6.png?csf=1&web=1&e=sIdfhqg)
 
 ### Tussenstap 2: Geohydrologie
-
 Als de input selectie is afgerond drukt de gebruiker rechtsonder op “Stap 2: Geodydrologie”. Het is altijd mogelijk om weer terug te gaan naar de vorige stap. 
 
 In de tussenstap Geohydrologie worden de stijghoogtes bepaald die van belang zijn voor de berekeningen. Hiervoor kan gekozen worden uit drie modellen die in dit scherm worden beschreven. Hier voert de gebruiker ook het rivierwaterpeil en het polderpeil in. 
@@ -297,13 +278,11 @@ Tip: Het is te adviseren om controles uit te voeren met meerdere geohydrologisch
 ---
 
 ### Tussenstap 3: Genereren uittredepunten
-
 Als de input selectie is afgerond drukt de gebruiker rechtsonder op “Stap 3: Genereren uittredepunt. Het is altijd mogelijk om weer terug te gaan naar de vorige stap. In dit voorbeeld gaan we door met een Niveau 1 methode met een dempingsfactor van 0.8.
 
 ![Screenshot](./img/Step_5_10.png?csf=1&web=1&e=sIdfhqg)
 
 De uittredepunten kunnen op drie manieren worden gegenereerd:
-
 1. Als grid in het achterland.
 2. Handmatig door een lijn te tekenenen op de kaart.
 3. In de afgesneden sloten onder [Tussenstap 1](####tussenstap-1-input-selectie)
@@ -323,7 +302,6 @@ Aangemaakte uittredepunten kunnen individueel verwijderd worden. Voor het verwij
 ![Screenshot](./img/Step_5_12.png?csf=1&web=1&e=sIdfhqg)
 
 ### Tussenstap 4: Berekeningen
-
 Nu de uittredepunten zijn gegenereerd kunnen de berekeningen worden uitgevoerd. Klik op "Stap 4: Berekeningen" in de rechteronderhoek om naar de berekeningen te gaan.
 
 In dit scherm kunnen in de rechter tabs de resultaten van de berekeningen voor opbarsten, heave en Sellmeijer (terugschrijdende erosie) worden ingezien. Deze worden weergegeven voor elk uittredepunt.
@@ -335,39 +313,29 @@ In het rechter tab "Bodemopbouw inspectie" kan de bodemopbouw van een geselectee
 ![Screenshot](./img/Step_5_14.png?csf=1&web=1&e=sIdfhqg)
 
 # Achtergrond input
-
 WORK IN PROGRESS
 
 ## Invoeren van lijnen uit QGIS
-
 Deze instructies gelden voor alle lijnen die worden geimporteerd als shapefile (LineString) in QGIS, bijvoorbeeld de kruinlijn of de intredelijn. Dit zou vergelijkbaar moeten werken in andere GIS software.
 
 ### Stap 1: Maak een LineString.
-
 Ga naar de tab "Layer" en click op "Create Layer" en selecteerd "New Shapefile Layer". Geef een naam op voor de laag en selecteer "LineString" als het geometry type. Deze laag wordt toegevoegd aan de Table of Contents aan de linkerkant van het scherm. Rechtsklik op deze nieuwe laag en selecteer "Toggle Editing". Selecteer dan het icoon "Add Line Feature" uit de bovenste toolbar en trek de gewenste lijn op de kaart door links te klikken. Rechtsklik om het tekenen af te sluiten.
 
 ### Stap 2: Exporteer de laag als shapefile
-
 Rechtslkik op de laag in de linker Table of Contents en selecteer "Export" en vervolgens "Save Features As". Kies voor "ESR Shapefile" als het formaat en sla het bestand op de gewenste locatie onder de juiste naam op. 
 
 ### Stap 3: Genereer .zip file
-
 In de folder waar de shapefile is opgeslagen zijn nu zes bestanden te vinden met verschillende extensies (.cpg, .dbf, .prj, .shp, .qmd, .shx). Voeg deze samen in een .zip bestand. Deze zipfile kan dan worden geupload in de tool.
-
 ## 3D grondmodel
-
 (nog te maken)
 
 ## Afsnijden 3D grondmodel
-
  Het is mogelijk om een grote dataset af te snijden in het gebied van interesse. Klik hiervoor op de “[Open](https://hdsr.viktor.ai/workspaces/1/app/editor/2)” knop naast de tekst "Models Folder" in het VIKTOR startscherm. Dit opent een nieuw view waar het mogelijk is om een bron   te selecteren en hier een subset van te maken. Deze kan worden opgeslagen op de computer onder de gewenste bestandsnaam om vervolgens te uploaden indien gewenst.
 
 ## Sloten uit QGIS
-
 Deze instructies geven aan hoe een slotenbestand kan worden gemaakt voor gebruik in de tool. Elk Hoogheemraadschap gaat op een iets andere manier om met de slotenbestanden wat het lastig maakt dit generiek toe te lichten. Deze instructie is gebaseerd op de data van HDSR.
 
 De sloten data kan worden gedownload als een .gdf database van https://experience.arcgis.com/experience/36136fad9d1049db830b2661dd074bcb/. Echter kan QGIS niet direct met dit bestandsformaat omgaan. Het is mogelijk hier omheen te werken door met de volgende bestanden in de bijlage te werken:
-
 - De hartlijn van de droge sloten (Leggervak_droge_sloot)
 - De hartlijn van de natte sloten (LeggervakLine)
 - De polygon van de droge sloten (Kernzone_droge_sloot)
@@ -376,51 +344,40 @@ De sloten data kan worden gedownload als een .gdf database van https://experienc
 De bijlage bevat data voor het gehele waterschap. Dit is meer data dan benodigd voor een specifiek project en QGIS kan worden gebruikt om de data af te knippen over het interessegebied.
 
 ### Stap 1: Importeer de slootdata in QGIS
-
 Ga naar het tab "Layer" en klik op "Add Layer" en "Add Vector Layer". Selecteer de box "Directory" en selecteerd "OpenFileGDB" als brontype. Kies de folder van de bijlage voor de dataset.
 
 ### Stap 2: Teken polygon van interessegebied
-
 Het is nodig een polygon te tekenen om de sloten in het interessegebied te selecteren. Ga hiervoor naar de tab "Layer" en click "Create Layer" en "New Shapefile Layer". Kies een naam voor de polygon en select "Polygon" als geometry type.
 
 De laag wordt nu toegevoegd aan de table of contents aan de linkerkant van het scherm. Rechtsklik op deze nieuwe laag en selecteer "Toggle Editing". Selecteer het icoon "Add Polygon Feature" van de bovenste toolbar en teken de polygon op de kaart met linkermuisklikken. Het is geadviseerd om zo min mogelijk sloten als nodig te gebruiken om te voorkomen dat de tool erg traag wordt. Rechtsklik om het tekenen af te ronden.
 
 ### Stap 3: Knip de sloten af op de polygon
-
 Ga naar de tab "Vector" en klik op "Geoprocessing Tools", dan "Clip" en kies één van de vier sloten lagen zoals boven genoemd als "Input Layer" de gecreërde polygon als "Overlay layer". Klik op "Run" en een nieuwe afgeknipte laag wordt toegevoegd aan de table of contents. Hernoem de laag naar wens en herhaal dit proces voor de andere drie slootlagen.
 
 ### Stap 4: Exporteer de afgesneden lagen
-
 Rechtsklik op de laag in de linker table of contents en selecteer "Export" en dan "Save Feature As". Kies "ESRI Shapefile" als het formaat en kies de loactie en naam van de nieuwe ShapeFile. De droge sloot lagen moeten minimaal het woord "droge" in hun naam hebben om correct verwerkt te worden in de tool. 
 
 De ShapeFiles van de vier slootlagen moeten in de dezelfde folder worden opgeslagen en samengevoegd in een zip bestand om in de tool te laden.
 
 ## Bathymetrie
-
 Deze korte handleiding is voor het invoeren van bathymetrie gegevens specifiek voor het project. Waar bathymetrische data ontbreekt maakt de tool gebruik van AHN data.
 
 ### Stap 1: Download bathymetrie data
-
 Bathymetrische data kan worden gedownload via: https://maps.rijkswaterstaat.nl/geoweb55/index.html?viewer=Bathymetrie_Nederland.Webviewer. Klik eerst op een interessegebied en selecteer dan het geotiff formaat.
 
 ### Stap 2: Upload bathymetrie data naar QGIS
-
 Ga naar de tab "Layer" en klik op "Data Source Manager" en selecteerd de .tif file als bronbestand. Dit is een raster laag met met grijstinten voor de hoogtes. Deze file is standaard te groot om te uploaden naar de tool en moet versimpeld worden.
 
 ### Stap 3: Teken polygon
-
 Het is nodig een polygon te tekenen om het interessegebied. Ga hiervoor naar de tab "Layer" en click "Create Layer" en "New Shapefile Layer". Kies een naam voor de polygon en select "Polygon" als geometry type. 
 
 De laag wordt nu toegevoegd aan de table of contents aan de linkerkant van het scherm. Rechtsklik op deze nieuwe laag en selecteer "Toggle Editing". Selecteer het icoon "Add Polygon Feature" van de bovenste toolbar en teken de polygon op de kaart met linkermuisklikken. Rechtsklik om het tekenen af te ronden.
 
 ### Stap 4: Knip de bathymetrie af
-
 Ga naar de tab "Raster" en klik op "Extraction" en dan op "Clip Raster by Mask Layer". Kies de raster bathymetrie laag als "Input Layer" en de polgyon als "Mask Layer" en druk op "Run".
 
 ### Stap 5: Exporteer de afgeknipte bathymetrie
-
 Rechtsklik op de laag in de linker table of contents en selecteer "Export" en dan "Save Feature As". Kies "GeoTIFF" als het formaat en kies de loactie en naam van de nieuwe ShapeFile. Het wordt sterk geadviseerd om de resolutie te wijzigen gezien de bathymetrie data standaard een erg hoge resolutie heeft waardoor veel data moet worden geupload. Verander zowel de horizontale als vertical resolutie naar 5m. Een nieuwe raster file is nu beschikbaar om te uploaden naar de tool.
 
 # Technische achtergrond
-
 (nog te maken)
