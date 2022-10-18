@@ -1,0 +1,104 @@
+{
+  "case_1": {
+    "soil_layout": [
+      {
+        "soil": {
+          "name": "cover_layer",
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "properties": {}
+        },
+        "top_of_layer": 2.0,
+        "bottom_of_layer": 0.0,
+        "properties": {
+          "gamma_dry": 17,
+          "gamma_wet": 17,
+          "horizontal_permeability": 0.000001,
+          "vertical_permeability": 0.000001,
+          "aquifer": false
+        }
+      },
+      {
+        "soil": {
+          "name": "first_aquifer",
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "properties": {}
+        },
+        "top_of_layer": 0.0,
+        "bottom_of_layer": -10.0,
+        "properties": {
+          "aquifer": true,
+          "horizontal_permeability": 10,
+          "grain_size_d70": 0.200
+        }
+      }
+    ],
+    "polder_level": 2,
+    "river_level": 5,
+    "damping_factor": 0.8,
+    "leakage_length_hinterland": 500,
+    "leakage_length_foreland": 50,
+    "dike_width": 40,
+    "distance_from_ref_line": 20,
+    "distance_from_entry_line": 50,
+    "geohydrologic_model": "1"
+  },
+  "case_2": {
+    "soil_layout": [
+      {
+        "soil": {
+          "name": "cover_layer",
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "properties": {}
+        },
+        "top_of_layer": 2.0,
+        "bottom_of_layer": 0.0,
+        "properties": {
+          "gamma_dry": 14,
+          "gamma_wet": 14,
+          "aquifer": false
+        }
+      },
+      {
+        "soil": {
+          "name": "Sand",
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "properties": {}
+        },
+        "top_of_layer": 0.0,
+        "bottom_of_layer": -10.0,
+        "properties": {
+          "gamma_dry": 17,
+          "gamma_wet": 19,
+          "aquifer": true,
+          "horizontal_permeability": 10,
+          "grain_size_d70": 0.2
+        }
+      }
+    ],
+    "polder_level": 2,
+    "river_level": 5,
+    "damping_factor": 0.8,
+    "leakage_length_hinterland": 500,
+    "leakage_length_foreland": 50,
+    "dike_width": 40,
+    "distance_from_ref_line": 30,
+    "distance_from_entry_line": 50,
+    "geohydrologic_model": "2"
+  }
+}

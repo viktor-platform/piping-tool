@@ -1,0 +1,52 @@
+DEFAULT_CLASSIFICATION_TABLE = [
+    {"layer": "Niet geclassificeerd", "top_of_layer": "-", "bottom_of_layer": "-", "soil_type": "Deklaag"},
+    {"layer": "Veen", "top_of_layer": "-", "bottom_of_layer": "-", "soil_type": "Deklaag"},
+    {"layer": "Klei", "top_of_layer": "-", "bottom_of_layer": "-", "soil_type": "Deklaag"},
+    {"layer": "Kleiig zand/ zandige klei", "top_of_layer": "-", "bottom_of_layer": "-", "soil_type": "Klei diep"},
+    {"layer": "Fijn zand", "top_of_layer": "-", "bottom_of_layer": "-", "soil_type": "Holoceen zand"},
+    {"layer": "Matig grof zand", "top_of_layer": "-", "bottom_of_layer": "-", "soil_type": "Holoceen zand"},
+    {"layer": "Grof zand", "top_of_layer": "-", "bottom_of_layer": "-", "soil_type": "Pleistoceen zand"},
+]
+
+DEFAULT_MATERIAL_TABLE = [
+    {
+        "name": "Deklaag",
+        "color": "128,128,128",
+        "aquifer": False,
+        "gamma_dry": 16,
+        "gamma_wet": 16,
+        "k_hor": 0.05,
+        "k_vert": 0.005,
+        "d_70": None,
+    },
+    {
+        "name": "Holoceen zand",
+        "color": "243, 225, 6",
+        "aquifer": True,
+        "gamma_dry": 17,
+        "gamma_wet": 19,
+        "k_hor": 2.59,
+        "k_vert": 0.86,
+        "d_70": 0.250,
+    },
+    {
+        "name": "Pleistoceen zand",
+        "color": "231,195,22",
+        "aquifer": True,
+        "gamma_dry": 19,
+        "gamma_wet": 21,
+        "k_hor": 2.59,
+        "k_vert": 0.86,
+        "d_70": 0.330,
+    },
+    {
+        "name": "Klei diep",
+        "color": "0,146,0",
+        "aquifer": False,
+        "gamma_dry": 16,
+        "gamma_wet": 16,
+        "k_hor": 0.00001,
+        "k_vert": 0.00001,
+        "d_70": None,
+    },
+]

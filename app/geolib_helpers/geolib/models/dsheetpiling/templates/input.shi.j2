@@ -1,0 +1,1121 @@
+INPUT FILE FOR D-SHEET PILING
+==============================================================================
+COMPANY    : {{ company }}   
+
+DATE       : {{ timestamp.strftime('%d-%m-%Y') }}
+TIME       : {{ timestamp.strftime('%H:%M:%S') }}
+FILENAME   : {{ output_fn }}
+CREATED BY : GEOLib version {{ glversion }}
+
+==========================    BEGINNING OF DATA     ==========================
+[VERSION]
+Soil={{ version.soil }}
+D-Sheet Piling={{ version.d__sheet_piling }}
+[END OF VERSION]
+
+[VERSION EXTERNALS]
+DGSCPTipCalc.dll={{ version_externals.dgscptipcalc____dll }}
+DGSCPTipUI.dll={{ version_externals.dgscptipui____dll }}
+[END OF VERSION EXTERNALS]
+
+[INPUT DATA]
+[SOIL COLLECTION]
+    {{ soil_collection.soil|length }} = number of items
+{% for soil in soil_collection.soil %}
+[SOIL]
+{{ soil.name }}
+SoilColor={{ soil.soilcolor }}
+SoilSoilType={{ soil.soilsoiltype.value }}
+SoilGrainType={{ soil.soilgraintype.value }}
+SoilGamDry={{ soil.soilgamdry }}
+SoilGamWet={{ soil.soilgamwet }}
+SoilRelativeDensity={{ soil.soilrelativedensity }}
+SoilEModMenard={{ soil.soilemodmenard }}
+SoilCohesion={{ soil.soilcohesion }}
+SoilPhi={{ soil.soilphi }}
+SoilDelta={{ soil.soildelta }}
+SoilCuTop={{ soil.soilcutop }}
+SoilCuBottom={{ soil.soilcubottom }}
+SoilCuBearingCapacityFactor={{ soil.soilcubearingcapacityfactor }}
+SoilOCR={{ soil.soilocr }}
+SoilDrained={{ soil.soildrained }}
+SoilPermeabKx={{ soil.soilpermeabkx }}
+SoilStdCohesion={{ soil.soilstdcohesion}}
+SoilStdPhi={{ soil.soilstdphi }}
+SoilDistCohesion={{ soil.soildistcohesion.value  }}
+SoilDistPhi={{ soil.soildistphi.value  }}
+SoilLa={{ soil.soilla }}
+SoilLn={{ soil.soilln }}
+SoilLp={{ soil.soillp }}
+SoilUseMenard={{ soil.soilusemenard.value }}
+SoilUseBrinchHansen={{ soil.soilusebrinchhansen.value }}
+SoilShellFactor={{ soil.soilshellfactor }}
+SoilLambdaType={{ soil.soillambdatype.value  }}
+SoilLam1={{ soil.soillam1 }}
+SoilLam2={{ soil.soillam2 }}
+SoilLam3={{ soil.soillam3 }}
+SoilKb0={{ "%.5E"|format(soil.soilkb0) }}
+SoilKb1={{ "%.5E"|format(soil.soilkb1) }}
+SoilKb2={{ "%.5E"|format(soil.soilkb2) }}
+SoilKb3={{ "%.5E"|format(soil.soilkb3) }}
+SoilKb4={{ "%.5E"|format(soil.soilkb4) }}
+SoilKo0={{ "%.5E"|format(soil.soilko0) }}
+SoilKo1={{ "%.5E"|format(soil.soilko1) }}
+SoilKo2={{ "%.5E"|format(soil.soilko2) }}
+SoilKo3={{ "%.5E"|format(soil.soilko3) }}
+SoilKo4={{ "%.5E"|format(soil.soilko4) }}
+SoilCurKb1={{ "%.5E"|format(soil.soilcurkb1) }}
+SoilCurKb2={{ "%.5E"|format(soil.soilcurkb2) }}
+SoilCurKb3={{ "%.5E"|format(soil.soilcurkb3) }}
+SoilCurKo1={{ "%.5E"|format(soil.soilcurko1) }}
+SoilCurKo2={{ "%.5E"|format(soil.soilcurko2) }}
+SoilCurKo3={{ "%.5E"|format(soil.soilcurko3) }}
+SoilHorizontalBehaviourType={{ soil.soilhorizontalbehaviourtype.value  }}
+SoilElasticity={{ "%.5E"|format(soil.soilelasticity) }}
+SoilDefaultElasticity={{ soil.soildefaultelasticity }}
+[END OF SOIL]
+{% endfor %}
+[END OF SOIL COLLECTION]
+
+[RUN IDENTIFICATION]
+{{ run_identification }}
+[END OF RUN IDENTIFICATION]
+
+[MODEL]
+{% if model is mapping -%}
+{{ model.model.value }} : {{ {0: 'Sheet piling', 1: 'Single pile', 2: 'Diaphragm wall'}[model.model.value]}}
+{{ model.method.value }} : {{ {0: 'Ka, Ko, Kp soil parameters', 1: 'C, phi, delta soil parameters', 2: 'Mixed'}[model.method.value]}}
+{{ model.verification | int }} : Verification = {{ model.verification | string | upper }}
+{{ model.ec7se_visible | int }} : EC7-SE visible = {{ model.ec7se_visible | string | upper }}
+{% if not model.pile_load_option %}
+{{ model.pile_load_option | int }} : Pile loaded by forces
+{{ model.pile_load_by_user | int }} : Pile loaded by user defined soil displacements
+{% elif model.pile_load_option and not model.pile_load_by_user %}
+{{ model.pile_load_option | int }} : Pile loaded by user defined soil displacements
+{{ model.pile_load_by_user | int }} : Pile loaded by user defined soil displacements
+{% elif model.pile_load_option and model.pile_load_by_user %}
+{{ model.pile_load_option | int }} : Pile loaded by calculated soil displacements
+{{ model.pile_load_by_user | int }} : Pile loaded by calculated soil displacements
+{% endif %}
+{{ model.probabilistic | int }} : Probabilistic = {{ model.probabilistic | string | upper }}
+{{ model.check_vertical_balance | int }} : Check vertical balance = {{ model.check_vertical_balance | string | upper }}
+{{ model.trildens_calculation | int }} : Trildens calculation = {{ model.trildens_calculation | string | upper }}
+{{ model.diepwand_calculation | int }} : Diepwand calculation = {{ model.diepwand_calculation | string | upper }}
+{{ model.elastic_calculation | int }} : Elastic calculation = {{ model.elastic_calculation | string | upper }}
+{{ model.wooden_sheetpiling | int }} : Wooden sheet piling = {{ model.wooden_sheetpiling | string | upper }}
+{% else -%}
+{{ model }}
+{% endif %}
+[END OF MODEL]
+
+[CPT LIST]
+{{ cpt_list }}
+[END OF CPT LIST]
+
+[SHEET PILING]
+{% if sheet_piling is mapping %}
+0
+{{ "%10.2f"|format(sheet_piling.leveltopsheetpiling) }} Level top sheet piling
+{{ "%10.2f"|format(sheet_piling.lengthsheetpiling) }} Length
+  {{ sheet_piling.sheetpiling|length }} Number of elements
+{% for element in sheet_piling.sheetpiling %}
+[SHEET PILING ELEMENT]
+{{ element.name }}
+SheetPilingElementMaterialType={{ element.sheetpilingelementmaterialtype.value }}
+SheetPilingElementEI={{ "%E"|format(element.sheetpilingelementei) }}
+SheetPilingElementWidth={{ "%0.2f"|format(element.sheetpilingelementwidth) }}
+SheetPilingElementLevel={{ "%0.2f"|format(element.sheetpilingelementlevel) }}
+SheetPilingElementHeight={{ element.sheetpilingelementheight|int }}
+SheetPilingElementCoatingArea={{ element.sheetpilingelementcoatingarea }}
+SheetPilingPileWidth={{ element.sheetpilingpilewidth }}
+SheetPilingElementSectionArea={{ element.sheetpilingelementsectionarea }}
+SheetPilingElementResistingMoment={{ element.sheetpilingelementresistingmoment }}
+SheetPilingElementReductionFactorEI={{ "%0.2f"|format(element.sheetpilingelementreductionfactorei) }}
+SheetPilingElementNote={{ element.sheetpilingelementnote }}
+SheetPilingElementMaxCharacteristicMoment={{ "%0.2f"|format(element.sheetpilingelementmaxcharacteristicmoment) }}
+SheetPilingElementMaxPlasticCharacteristicMoment={{ "%0.2f"|format(element.sheetpilingelementmaxplasticcharacteristicmoment) }}
+SheetPilingElementKMod={{ "%0.2f"|format(element.sheetpilingelementkmod) }}
+SheetPilingElementMaterialFactor={{ "%0.2f"|format(element.sheetpilingelementmaterialfactor) }}
+sSheetPilingElementReductionFactorMaxMoment={{ "%0.2f"|format(element.ssheetpilingelementreductionfactormaxmoment) }}
+DiaphragmWallIsSymmetric={{ element.diaphragmwallissymmetric }}
+DiaphragmWallPosEIElastoPlastic1={{ element.diaphragmwallposeielastoplastic1 }}
+DiaphragmWallNegEIElastoPlastic1={{ element.diaphragmwallnegeielastoplastic1 }}
+DiaphragmWallPosMomElastic={{ element.diaphragmwallposmomelastic }}
+DiaphragmWallNegMomElastic={{ element.diaphragmwallnegmomelastic }}
+DiaphragmWallPosMomPlastic={{ element.diaphragmwallposmomplastic }}
+DiaphragmWallNegMomPlastic={{ element.diaphragmwallnegmomplastic }}
+DiaphragmWallPosEIElastoPlastic2={{ element.diaphragmwallposeielastoplastic2 }}
+DiaphragmWallPosMomElastoPlastic={{ element.diaphragmwallposmomelastoplastic }}
+DiaphragmWallNegEIElastoPlastic2={{ element.diaphragmwallnegeielastoplastic2 }}
+DiaphragmWallNegMomElastoPlastic={{ element.diaphragmwallnegmomelastoplastic }}
+WoodenSheetPilingElementE={{ element.woodensheetpilingelemente }}
+WoodenSheetPilingElementCharacFlexuralStrength={{ element.woodensheetpilingelementcharacflexuralstrength }}
+WoodenSheetPilingElementKSys={{ element.woodensheetpilingelementksys }}
+WoodenSheetPilingElementKDef={{ element.woodensheetpilingelementkdef }}
+WoodenSheetPilingElementPsi2Eff={{ element.woodensheetpilingelementpsi2eff }}
+WoodenSheetPilingElementMaterialFactor={{ element.woodensheetpilingelementmaterialfactor }}
+WoodenSheetPilingElementKModFShort={{ element.woodensheetpilingelementkmodfshort }}
+WoodenSheetPilingElementKModFLong={{ element.woodensheetpilingelementkmodflong }}
+WoodenSheetPilingElementKModE={{ element.woodensheetpilingelementkmode }}
+[END OF SHEET PILING ELEMENT]
+{% endfor %}
+{% else %}
+{{ sheet_piling }}
+{% endif %}
+[END OF SHEET PILING]
+
+[COMBINED WALL]
+{{ combined_wall }}
+[END OF COMBINED WALL]
+
+[VERTICAL BALANCE]
+{{ vertical_balance }}
+[END OF VERTICAL BALANCE]
+
+[SETTLEMENT BY VIBRATION PARAMS]
+{{ settlement_by_vibration_params }}
+[END OF SETTLEMENT BY VIBRATION PARAMS]
+{% if anchors %}
+
+[ANCHORS]
+{% if anchors is mapping %}
+  {{ anchors.anchors | length }} Number of anchors
+ Nr  Level        E-mod  Cross sect.   Length   YieldF    Angle   Height   Side Name
+{% for anchor in anchors.anchors %}
+  {{ loop.index }} {{ "%7.2f"|format(anchor.level) }} {{ "%11.4E"|format(anchor.e_modulus) }} {{ "%11.4E"|format(anchor.cross_section) }} {{ "%9.2f"|format(anchor.length) }} {{ "%8.2f"|format(anchor.yield_force) }} {{ "%9.2f"|format(anchor.angle) }} {{ "%9.2f"|format(anchor.wall_height_kranz) }} {{ "%7d"|format(anchor.side.value) }} {{ anchor.name }}
+
+{% endfor %}
+
+{% else %}
+{{ anchors }}
+{% endif %}
+[END OF ANCHORS]
+{% endif %}
+{% if struts %}
+
+[STRUTS]
+{% if struts is mapping %}
+  {{ struts.struts | length }} Number of struts
+ Nr        Level        E-mod     Cross sect.    Length     YieldF   Side
+{% for strut in struts.struts %}
+  {{ loop.index }} {{ "%7.2f"|format(strut.level) }} {{ "%11.4E"|format(strut.e_modulus) }} {{ "%11.4E"|format(strut.cross_section) }} {{ "%7.2f"|format(strut.length) }} {{ "%6.2f"|format(strut.buckling_force) }} {{ "%2d"|format(strut.angle) }} 0.00 {{ strut.side.value }} {{ strut.name }}
+{% endfor %}
+
+{% else %}
+{{ struts }}
+{% endif %}
+[END OF STRUTS]
+{% endif %}
+{% if spring_supports %}
+
+[SPRING SUPPORTS]
+{% if spring_supports is mapping %}
+  {{ spring_supports.supports | length }} Number of spring supports
+ Nr        Level    Rot stiff.    Tr stiff.
+{% for support in spring_supports.supports %}
+  {{ loop.index }} {{ "%11.2f"|format(support.level) }} {{ "%13.5f"|format(support.rotational_stiffness) }} {{ "%11.5f"|format(support.translational_stiffness) }} {{ support.name }}
+{% endfor %}
+
+{% else %}
+{{ spring_supports }}
+{% endif %}
+[END OF SPRING SUPPORTS]
+{% endif %}
+{% if rigid_supports %}
+
+[RIGID SUPPORTS]
+{% if rigid_supports is mapping %}
+  {{ rigid_supports.supports | length }} Number of rigid supports
+ Nr        Level    Rot stiff.    Tr stiff.
+{% for support in rigid_supports.supports %}
+  {{ loop.index }} {{ "%11.2f"|format(support.level) }} {{ support.rotational_stiffness | int }} {{ support.translational_stiffness | int }} {{ support.name }}
+{% endfor %}
+
+{% else %}
+{{ rigid_supports }}
+{% endif %}
+[END OF RIGID SUPPORTS]
+{% endif %}
+
+{% if uniform_loads %}
+
+[UNIFORM LOADS]
+{% if uniform_loads is mapping %}
+{{ "%5d"|format(uniform_loads.loads | length) }} = number of items
+{% for load in uniform_loads.loads %}
+[LOAD]
+{{ load.name }}
+UniformLoadLeft={{ "%.2f"|format(load.uniformloadleft) }}
+UniformLoadRight={{ "%.2f"|format(load.uniformloadright) }}
+UniformLoadPermanent={{ load.uniformloadpermanent.value }}
+UniformLoadFavourable={{ load.uniformloadfavourable.value }}
+UniformLoadStandardDeviationLeft={{ "%.2f"|format(load.uniformloadstandarddeviationleft) }}
+UniformLoadStandardDeviationRight={{ "%.2f"|format(load.uniformloadstandarddeviationright) }}
+UniformLoadDistLeft={{ load.uniformloaddistleft.value }}
+UniformLoadDistRight={{ load.uniformloaddistright.value}}
+[END OF LOAD]
+{% endfor %}
+{% else %}
+{{ uniform_loads }}
+{% endif %}
+[END OF UNIFORM LOADS]
+
+{% endif %}
+{% if surcharge_loads %}
+
+[SURCHARGE LOADS]
+{% if surcharge_loads is mapping %}
+{{ "%5d"|format(surcharge_loads.loads | length) }} = number of items
+{% for load in surcharge_loads.loads %}
+[LOAD]
+{{ load.name }}
+{{ load.points | length }}
+{% for point in load.points %}
+[POINT]
+SurchargeLoadDistance={{ "%.2f"|format(point.surchargeloaddistance) }}
+SurchargeLoadValue={{ "%.2f"|format(point.surchargeloadvalue) }}
+[END OF POINT]
+{% endfor %}
+SurchargeLoadPermanent={{ load.surchargeloadpermanent.value }}
+SurchargeLoadFavourable={{ load.surchargeloadfavourable.value }}
+SurchargeLoadStandardDeviation={{ "%.2f"|format(load.surchargeloadstandarddeviation) }}
+SurchargeLoadDistribution={{ load.surchargeloaddistribution.value }}
+[END OF LOAD]
+{% endfor %}
+{% else %}
+{{ surcharge_loads }}
+{% endif %}
+[END OF SURCHARGE LOADS]
+{% endif %}
+{% if horizontal_line_loads %}
+
+[HORIZONTAL LINE LOADS]
+{% if horizontal_line_loads is mapping %}
+  {{ horizontal_line_loads.loads | length }} Number of horizontal line loads 
+ Nr      Level      Value  Permanent Favourable Name
+{% for load in horizontal_line_loads.loads %}
+  {{ loop.index }} {{"%11.2f"|format(load.level)}} {{"%11.2f"|format(load.load)}} {{load.duration_type.value}} {{load.load_type.value}} {{load.name}}
+{% endfor %}
+{% else %}
+{{ horizontal_line_loads }}
+{% endif %}
+[END OF HORIZONTAL LINE LOADS]
+{% endif %}
+{% if moments %}
+
+[MOMENTS]
+{% if moments is mapping %}
+  {{ moments.loads | length }} Number of moments
+ Nr      Level      Value  Permanent Favourable Name
+{% for load in moments.loads %}
+  {{ loop.index }} {{"%11.2f"|format(load.level)}} {{"%11.2f"|format(load.load)}} {{load.duration_type.value}} {{load.load_type.value}} {{load.name}}
+{% endfor %}
+{% else %}
+{{ moments }}
+{% endif %}
+[END OF MOMENTS]
+{% endif %}
+{% if normal_forces %}
+
+[NORMAL FORCES]
+{% if normal_forces is mapping %}
+  {{ normal_forces.loads | length }} Number of normal forces
+ Nr   FPileTop  FSurfLeft FSurfRight   FPileToe  Permanent Favourable Name
+{% for load in normal_forces.loads %}
+  {{ loop.index }} {{"%11.2f"|format(load.force_at_sheet_pile_top)}} {{"%11.2f"|format(load.force_at_surface_level_left_side)}} {{"%11.2f"|format(load.force_at_surface_level_right_side)}} {{"%11.2f"|format(load.force_at_sheet_pile_toe)}} {{load.duration_type.value}} {{load.load_type.value}} {{load.name}}
+{% endfor %}
+{% else %}
+{{ normal_forces }}
+{% endif %}
+[END OF NORMAL FORCES]
+{% endif %}
+
+[WATER]
+ {{ water.unit_weight_of_water }} Unit weight of water
+[END OF WATER]
+
+[EARTH QUAKE]
+{{ earth_quake }}
+[END OF EARTH QUAKE]
+
+[SOIL PROFILES]
+{% if soil_profiles is mapping %}
+  {{ soil_profiles.curve_number }} Number of spring characteristics curves
+  {{ soil_profiles.use_unloading_reloading_curve | int }} 1/0 : Yes/No Unloading curve
+  {{ soil_profiles.modulus_reaction_type }} 1/0 : Yes/No Use Cur values
+
+  {{ soil_profiles.soil_profiles | length }} Number of soil profiles
+{% for soil_profile in soil_profiles.soil_profiles %}
+{{ soil_profile.name }}
+       {{ "%5.3f"|format(soil_profile.coordinate.x) }} X coordinate
+       {{ "%5.3f"|format(soil_profile.coordinate.y) }} Y coordinate
+
+  {{ soil_profile.layers | length }} Number of soil layers per soil profile
+ Nr      Level   Wosp Top  Wosp Bott Material Name
+{% for layer in soil_profile.layers %}
+  {{ loop.index }} {{ "%11.2f"|format(layer.top_of_layer) }} {{ "%11.2f"|format(layer.water_pressure_top) }} {{ "%11.2f"|format(layer.water_pressure_bottom) }} {{ layer.soil }}
+{% endfor %}
+{% endfor %}
+{% else %}
+{{ soil_profiles }}
+{% endif %}
+
+[END OF SOIL PROFILES]
+
+[SURFACES]
+{% if surfaces is mapping %}
+  {{ surfaces.surfaces | length }} Number of surfaces 
+{% for surface in surfaces.surfaces %}
+  {{ loop.index }}     {{ surface.points | length }} {{ surface.name }}
+{{ "%.2f"|format(surface.std) }}  Standard deviation
+  {{ surface.distribution_type.value }}  Distribution type
+ Nr     X-coord     Value
+{% for point in surface.points %}
+   {{ point["Nr"] }} {{ "%11.2f"|format(point["X-coord"]) }} {{ "%11.2f"|format(point["Value"]) }}
+{% endfor %}
+{% endfor %}
+{% else %}
+{{ surfaces }}
+{% endif %}
+
+[END OF SURFACES]
+
+[WATERLEVELS]
+{% if waterlevels is mapping %}
+  {{ waterlevels.levels | length }} Number of Waterlevels 
+  3 Number of Data per Waterlevel 
+{% for waterlevel in waterlevels.levels %}
+{{ waterlevel.name }}
+{{ "%10.2f"|format(waterlevel.level) }}
+{{ "%10.2f"|format(waterlevel.standard_deviation) }}
+{{ "%10d"|format(waterlevel.distribution_type.value) }}
+{% endfor %}
+{% else %}
+{{ waterlevels }}
+{% endif %}
+
+[END OF WATERLEVELS]
+
+[CONSTRUCTION STAGES]
+{% if construction_stages is mapping %}
+  {{ construction_stages.stages | length }} Number of Construction stages
+{% for stage in construction_stages.stages %}
+{{ stage.name }}
+         {{ stage.method_left.value }}          {{ stage.method_right.value }} Method Left: {{ {1: 'Ka, Ko, Kp', 2: 'C, phi, delta'}[stage.method_left.value] }}  Method Right: {{ {1: 'Ka, Ko, Kp', 2: 'C, phi, delta'}[stage.method_left.value] }}
+{{ stage.surface_left }}
+{{ stage.surface_right }}
+{{ stage.water_level_left }}
+{{ stage.water_level_right }}
+{{ stage.soil_profile_left }}
+{{ stage.soil_profile_right }}
+{{ "%10.3f"|format(stage.displacement_top_sheet_piling) }}             Displacement top sheet piling
+         {{ 0 if stage.displacement_top_sheet_piling else 0 }}             Use top displacement
+{{ "%10d"|format(stage.anchors | length) }}              Anchors present in stage
+{% for anchor in stage.anchors %}
+{{ "%10d"|format(loop.index) }}       {{ anchor.pre_stress }} {{ anchor.name }}
+{% endfor %}
+{{ "%10d"|format(stage.struts | length) }}              Struts present in stage
+{% for strut in stage.struts %}
+{{ "%10d"|format(loop.index) }}       {{ strut.pre_stress }} {{ strut.name }}
+{% endfor %}
+{{ "%10d"|format(stage.spring_supports | length) }}              Spring supports present in stage
+{% for support in stage.spring_supports %}
+{{ "%10d"|format(loop.index) }} {{ support }}
+{% endfor %}
+{{ "%10d"|format(stage.rigid_supports | length) }}              Rigid supports present in stage
+{% for support in stage.rigid_supports %}
+{{ "%10d"|format(loop.index) }} {{ support }}
+{% endfor %}
+{{ "%10d"|format(stage.uniform_loads | length) }}              Uniform loads in stage
+{% for load in stage.uniform_loads %}
+{{ "%10d"|format(loop.index) }} {{ load }}
+{% endfor %}
+{{ "%10d"|format(stage.surcharge_loads_left | length) }} {{ "%11d"|format(stage.surcharge_loads_right | length) }}   Surcharge loads in stage
+{% for load in stage.surcharge_loads_left %}
+{{ "%10d"|format(loop.index) }} {{ load }}
+{% endfor %}
+{% for load in stage.surcharge_loads_right %}
+{{ "%10d"|format(loop.index) }} {{ load }}
+{% endfor %}
+{{ "%10d"|format(stage.horizontal_line_loads | length) }}              Horizontal line loads in stage
+{% for name in stage.horizontal_line_loads %}
+{{ "%10d"|format(loop.index) }} {{ name }}
+{% endfor %}
+{{ "%10d"|format(stage.moment_loads | length) }}              Moments in stage
+{% for name in stage.moment_loads %}
+{{ "%10d"|format(loop.index) }} {{ name }}
+{% endfor %}
+         {{ stage.normal_forces | length }}              Normal forces in stage
+{% for name in stage.normal_forces %}
+         {{ loop.index }} {{ name }}
+{% endfor %}
+         {{ stage.passive_side.value }}              Passive side overrule
+
+{% endfor %}
+
+{% else %}
+{{ construction_stages }}
+{% endif %}
+[END OF CONSTRUCTION STAGES]
+
+[CALCULATION OPTIONS PER STAGE]
+{% if calculation_options_per_stage is mapping %}
+{{ calculation_options_per_stage.stageoptions | length }} = number of items
+{% for stage in calculation_options_per_stage.stageoptions %}
+[STAGE]
+StagePartialFactorSetCUR={{ stage.stagepartialfactorsetcur.value }}
+StageVerify={{ stage.stageverify }}
+StageAnchorFactor={{ stage.stageanchorfactor }}
+StagePartialFactorSetEC7NADNL={{ stage.stagepartialfactorsetec7nadnl.value }}
+StageVerifyEC7NADNL={{ stage.stageverifyec7nadnl }}
+StageAnchorFactorEC7NADNL={{ stage.stageanchorfactorec7nadnl }}
+StageVerifyEC7NADB={{ stage.stageverifyec7nadb }}
+StagePartialFactorSetEC7NADSE={{ stage.stagepartialfactorsetec7nadse }}
+StageVerifyEC7NADSE={{ stage.stageverifyec7nadse }}
+[END OF STAGE]
+{% endfor %}
+{% else %}
+{{ calculation_options_per_stage }}
+{% endif %}
+[END OF CALCULATION OPTIONS PER STAGE]
+
+[CALCULATION OPTIONS]
+{% if calculation_options is mapping %}
+CalcFirstStageInitial={{ calculation_options.calcfirststageinitial|int }}
+CalcMinorNodesOn={{ calculation_options.calcminornodeson|int }}
+CalcReduceDeltas={{ calculation_options.calcreducedeltas|int }}
+CalcEmpiricalFactorStressType={{ calculation_options.calcempiricalfactorstresstype }}
+InputCalculationType={{ calculation_options.inputcalculationtype.value }}
+IsVibrationCalculation={{ calculation_options.isvibrationcalculation|int}}
+AllowableAnchorForceCalculationType={{ calculation_options.allowableanchorforcecalculationtype|int }}
+CalcAutoLambdasOn={{ calculation_options.calcautolambdason|int}}
+DesignStage={{ calculation_options.designstage }}
+DesignPileLengthFrom={{ calculation_options.designpilelengthfrom }}
+DesignPileLengthTo={{ calculation_options.designpilelengthto }}
+DesignPileLengthDecrement={{ calculation_options.designpilelengthdecrement }}
+DesignPileLengthNew={{ calculation_options.designpilelengthnew }}
+DesignType={{ calculation_options.designtype.value }}
+DesignEuroCodePartialFactorSet={{ calculation_options.designeurocodepartialfactorset.value }}
+DesignPartialFactorSetEC7NADNL={{ calculation_options.designpartialfactorsetec7nadnl.value }}
+DesignEC7NLMethod={{ calculation_options.designec7nlmethod.value }}
+DesignPartialFactorSetEC7NADB={{ calculation_options.designpartialfactorsetec7nadb.value }}
+DesignEC7BMethod={{ calculation_options.designec7bmethod.value }}
+DesignPartialFactorSet={{ calculation_options.designpartialfactorset.value }}
+DesignCURMethod={{ calculation_options.designcurmethod.value }}
+DesignPartialFactorSetEC7NADSE={{ calculation_options.designpartialfactorsetec7nadse }}
+DesignEC7SEMethod={{ calculation_options.designec7semethod }}
+VerifyType={{ calculation_options.verifytype.value }}
+EuroCodePartialFactorSet={{ calculation_options.eurocodepartialfactorset.value }}
+EuroCodeOverallStability={{ calculation_options.eurocodeoverallstability|int }}
+EC7NLMethod={{ calculation_options.ec7nlmethod.value }}
+EC7NLOverallPartialFactorSet={{ calculation_options.ec7nloverallpartialfactorset.value }}
+EC7NLOverallAnchorFactor={{ calculation_options.ec7nloverallanchorfactor }}
+EC7NADNLOverallStability={{ calculation_options.ec7nadnloverallstability|int }}
+EC7BOverallStability={{ calculation_options.ec7boverallstability|int }}
+NBMethod={{ calculation_options.nbmethod.value}}
+CURMethod={{ calculation_options.curmethod.value }}
+CUROverallPartialFactorSet={{ calculation_options.curoverallpartialfactorset.value }}
+CUROverallAnchorFactor={{ calculation_options.curoverallanchorfactor }}
+CUROverallStability={{ calculation_options.curoverallstability|int }}
+EC7SEMethod={{ calculation_options.ec7semethod }}
+EC7SEOverallPartialFactorSet={{ calculation_options.ec7seoverallpartialfactorset }}
+EC7NADSEOverallStability={{ calculation_options.ec7nadseoverallstability }}
+CURAnchorForceStage={{ calculation_options.curanchorforcestage }}
+CURStabilityStage={{ calculation_options.curstabilitystage }}
+OverallStabilityType={{ calculation_options.overallstabilitytype.value }}
+StabilityEuroCodePartialFactorSet={{ calculation_options.stabilityeurocodepartialfactorset.value }}
+StabilityEC7NLPartialFactorSet={{ calculation_options.stabilityec7nlpartialfactorset.value }}
+StabilityEC7BPartialFactorSet={{ calculation_options.stabilityec7bpartialfactorset.value }}
+StabilityCURPartialFactorSet={{ calculation_options.stabilitycurpartialfactorset.value }}
+StabilityEC7SEPartialFactorSet={{ calculation_options.stabilityec7separtialfactorset }}
+OverallStabilityDrained={{ calculation_options.overallstabilitydrained }}
+{% else %}
+{{ calculation_options }}
+{% endif %}
+[PARTIAL FACTORS EUROCODE DA1 SET1]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.000
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.000
+ConstructLoadFactorVarUnfavCalc=1.000
+EffectFactor=1.350
+EffectFactorVarUnfav=1.111
+MaterialFactorCohesion=1.000
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.000
+MaterialFactorSubgradeReaction=1.000
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=10.00
+GeometryMaxIncRetainingHeight=0.50
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.00
+GeometryDeltaActivePhreaticLine=0.00
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.000
+OverallStabilityFactorTgPhi=1.000
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=0.000
+VerticalBalanceGammaMb=1.000
+[END OF PARTIAL FACTORS EUROCODE DA1 SET1]
+[PARTIAL FACTORS EUROCODE DA1 SET2]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.300
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.000
+ConstructLoadFactorVarUnfavCalc=1.000
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.250
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.250
+MaterialFactorSubgradeReaction=1.000
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=10.00
+GeometryMaxIncRetainingHeight=0.50
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.00
+GeometryDeltaActivePhreaticLine=0.00
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.250
+OverallStabilityFactorTgPhi=1.250
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=0.000
+VerticalBalanceGammaMb=1.300
+[END OF PARTIAL FACTORS EUROCODE DA1 SET2]
+[PARTIAL FACTORS EUROCODE DA2]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.000
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.000
+ConstructLoadFactorVarUnfavCalc=1.000
+EffectFactor=1.350
+EffectFactorVarUnfav=1.111
+MaterialFactorCohesion=1.000
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.000
+MaterialFactorSubgradeReaction=1.000
+ResistanceFactor=1.400
+GeometryIncRetainingHeight=10.00
+GeometryMaxIncRetainingHeight=0.50
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.00
+GeometryDeltaActivePhreaticLine=0.00
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.000
+OverallStabilityFactorTgPhi=1.000
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=0.000
+VerticalBalanceGammaMb=1.100
+[END OF PARTIAL FACTORS EUROCODE DA2]
+[PARTIAL FACTORS EUROCODE DA3]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.300
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.350
+ConstructLoadFactorVarUnfavCalc=1.500
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.250
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.250
+MaterialFactorSubgradeReaction=1.000
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=10.00
+GeometryMaxIncRetainingHeight=0.50
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.00
+GeometryDeltaActivePhreaticLine=0.00
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.250
+OverallStabilityFactorTgPhi=1.250
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=0.000
+VerticalBalanceGammaMb=1.000
+[END OF PARTIAL FACTORS EUROCODE DA3]
+[PARTIAL FACTORS EC7 NL 0]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.000
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.000
+ConstructLoadFactorVarUnfavCalc=1.000
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.000
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.050
+MaterialFactorSubgradeReaction=1.300
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=10.00
+GeometryMaxIncRetainingHeight=0.50
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.15
+GeometryDeltaActivePhreaticLine=0.05
+OverallStabilityFactorDrivingMoment=0.900
+OverallStabilityFactorCohesion=1.300
+OverallStabilityFactorTgPhi=1.200
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=1.200
+VerticalBalanceGammaMb=1.200
+[END OF PARTIAL FACTORS EC7 NL 0]
+[PARTIAL FACTORS EC7 NL 1]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.000
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=0.900
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.215
+ConstructLoadFactorVarUnfavCalc=1.350
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.150
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.150
+MaterialFactorSubgradeReaction=1.300
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=10.00
+GeometryMaxIncRetainingHeight=0.50
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.20
+GeometryDeltaActivePhreaticLine=0.05
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.300
+OverallStabilityFactorTgPhi=1.200
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=1.200
+VerticalBalanceGammaMb=1.200
+[END OF PARTIAL FACTORS EC7 NL 1]
+[PARTIAL FACTORS EC7 NL 2]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.100
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=0.900
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.350
+ConstructLoadFactorVarUnfavCalc=1.500
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.250
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.175
+MaterialFactorSubgradeReaction=1.300
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=10.00
+GeometryMaxIncRetainingHeight=0.50
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.25
+GeometryDeltaActivePhreaticLine=0.05
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.450
+OverallStabilityFactorTgPhi=1.250
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=1.200
+VerticalBalanceGammaMb=1.200
+[END OF PARTIAL FACTORS EC7 NL 2]
+[PARTIAL FACTORS EC7 NL 3]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.250
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=0.900
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.485
+ConstructLoadFactorVarUnfavCalc=1.650
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.400
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.200
+MaterialFactorSubgradeReaction=1.300
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=10.00
+GeometryMaxIncRetainingHeight=0.50
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.25
+GeometryDeltaActivePhreaticLine=0.05
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.600
+OverallStabilityFactorTgPhi=1.300
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=1.350
+VerticalBalanceGammaMb=1.200
+[END OF PARTIAL FACTORS EC7 NL 3]
+[PARTIAL FACTORS EC7 B SET1]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.000
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.000
+ConstructLoadFactorVarUnfavCalc=1.000
+EffectFactor=1.350
+EffectFactorVarUnfav=1.111
+MaterialFactorCohesion=1.000
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.000
+MaterialFactorSubgradeReaction=1.000
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=10.00
+GeometryMaxIncRetainingHeight=0.50
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.00
+GeometryDeltaActivePhreaticLine=0.00
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.000
+OverallStabilityFactorTgPhi=1.000
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=0.000
+VerticalBalanceGammaMb=1.000
+[END OF PARTIAL FACTORS EC7 B SET1]
+[PARTIAL FACTORS EC7 B SET2]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.100
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.000
+ConstructLoadFactorVarUnfavCalc=1.000
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.250
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.250
+MaterialFactorSubgradeReaction=1.000
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=10.00
+GeometryMaxIncRetainingHeight=0.50
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.00
+GeometryDeltaActivePhreaticLine=0.00
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.250
+OverallStabilityFactorTgPhi=1.250
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=0.000
+VerticalBalanceGammaMb=1.300
+[END OF PARTIAL FACTORS EC7 B SET2]
+[PARTIAL FACTORS CUR I]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.000
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.000
+ConstructLoadFactorVarUnfavCalc=1.000
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.000
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.050
+MaterialFactorSubgradeReaction=1.300
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=0.00
+GeometryMaxIncRetainingHeight=0.00
+GeometryDeltaPassiveSurfaceLevel=0.20
+GeometryDeltaPassivePhreaticLine=0.15
+GeometryDeltaActivePhreaticLine=0.05
+OverallStabilityFactorDrivingMoment=0.900
+OverallStabilityFactorCohesion=1.500
+OverallStabilityFactorTgPhi=1.200
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=0.000
+VerticalBalanceGammaMb=1.200
+[END OF PARTIAL FACTORS CUR I]
+[PARTIAL FACTORS CUR II]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.000
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.000
+ConstructLoadFactorVarUnfavCalc=1.000
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.000
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.150
+MaterialFactorSubgradeReaction=1.300
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=0.00
+GeometryMaxIncRetainingHeight=0.00
+GeometryDeltaPassiveSurfaceLevel=0.30
+GeometryDeltaPassivePhreaticLine=0.20
+GeometryDeltaActivePhreaticLine=0.05
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.500
+OverallStabilityFactorTgPhi=1.200
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=0.000
+VerticalBalanceGammaMb=1.200
+[END OF PARTIAL FACTORS CUR II]
+[PARTIAL FACTORS CUR III]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.250
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.000
+LoadFactorVarUnfavMultiply=1.000
+LoadFactorPermUnfavCalc=0.000
+LoadFactorVarUnfavCalc=0.000
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=1.000
+ConstructLoadFactorPermUnfavMultiply=1.000
+ConstructLoadFactorVarUnfavMultiply=1.000
+ConstructLoadFactorPermUnfavCalc=1.000
+ConstructLoadFactorVarUnfavCalc=1.000
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.100
+MaterialFactorUndrainedShearStrength=1.000
+MaterialFactorTgPhi=1.200
+MaterialFactorSubgradeReaction=1.300
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=0.00
+GeometryMaxIncRetainingHeight=0.00
+GeometryDeltaPassiveSurfaceLevel=0.35
+GeometryDeltaPassivePhreaticLine=0.25
+GeometryDeltaActivePhreaticLine=0.05
+OverallStabilityFactorDrivingMoment=1.100
+OverallStabilityFactorCohesion=1.500
+OverallStabilityFactorTgPhi=1.200
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=0.000
+VerticalBalanceGammaMb=1.200
+[END OF PARTIAL FACTORS CUR III]
+[PARTIAL FACTORS EC7 SE VK1]
+SafetyFactorGammaD=0.83
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.000
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.100
+LoadFactorVarUnfavMultiply=1.400
+LoadFactorPermUnfavCalc=0.913
+LoadFactorVarUnfavCalc=1.162
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=0.000
+ConstructLoadFactorPermUnfavMultiply=1.350
+ConstructLoadFactorVarUnfavMultiply=1.500
+ConstructLoadFactorPermUnfavCalc=1.121
+ConstructLoadFactorVarUnfavCalc=1.245
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.300
+MaterialFactorUndrainedShearStrength=1.500
+MaterialFactorTgPhi=1.300
+MaterialFactorSubgradeReaction=1.000
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=0.00
+GeometryMaxIncRetainingHeight=0.00
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.00
+GeometryDeltaActivePhreaticLine=0.00
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.300
+OverallStabilityFactorTgPhi=1.300
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=1.000
+VerticalBalanceGammaMb=1.300
+[END OF PARTIAL FACTORS EC7 SE VK1]
+[PARTIAL FACTORS EC7 SE VK2]
+SafetyFactorGammaD=0.91
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.000
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.100
+LoadFactorVarUnfavMultiply=1.400
+LoadFactorPermUnfavCalc=1.001
+LoadFactorVarUnfavCalc=1.274
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=0.000
+ConstructLoadFactorPermUnfavMultiply=1.350
+ConstructLoadFactorVarUnfavMultiply=1.500
+ConstructLoadFactorPermUnfavCalc=1.228
+ConstructLoadFactorVarUnfavCalc=1.365
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.300
+MaterialFactorUndrainedShearStrength=1.500
+MaterialFactorTgPhi=1.300
+MaterialFactorSubgradeReaction=1.000
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=0.00
+GeometryMaxIncRetainingHeight=0.00
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.00
+GeometryDeltaActivePhreaticLine=0.00
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.300
+OverallStabilityFactorTgPhi=1.300
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=1.000
+VerticalBalanceGammaMb=1.300
+[END OF PARTIAL FACTORS EC7 SE VK2]
+[PARTIAL FACTORS EC7 SE VK3]
+SafetyFactorGammaD=1.00
+SafetyFactorEta=1.00
+LoadFactorPermUnfav=1.000
+LoadFactorPermFav=1.000
+LoadFactorVarUnfav=1.000
+LoadFactorVarFav=0.000
+LoadFactorPermUnfavMultiply=1.100
+LoadFactorVarUnfavMultiply=1.400
+LoadFactorPermUnfavCalc=1.100
+LoadFactorVarUnfavCalc=1.400
+ConstructLoadFactorPermFav=1.000
+ConstructLoadFactorVarFav=0.000
+ConstructLoadFactorPermUnfavMultiply=1.350
+ConstructLoadFactorVarUnfavMultiply=1.500
+ConstructLoadFactorPermUnfavCalc=1.350
+ConstructLoadFactorVarUnfavCalc=1.500
+EffectFactor=1.000
+EffectFactorVarUnfav=1.000
+MaterialFactorCohesion=1.300
+MaterialFactorUndrainedShearStrength=1.500
+MaterialFactorTgPhi=1.300
+MaterialFactorSubgradeReaction=1.000
+ResistanceFactor=1.000
+GeometryIncRetainingHeight=0.00
+GeometryMaxIncRetainingHeight=0.00
+GeometryDeltaPassiveSurfaceLevel=0.00
+GeometryDeltaPassivePhreaticLine=0.00
+GeometryDeltaActivePhreaticLine=0.00
+OverallStabilityFactorDrivingMoment=1.000
+OverallStabilityFactorCohesion=1.300
+OverallStabilityFactorTgPhi=1.300
+OverallStabilityFactorUnitWeight=1.000
+FactorRepValuesMDPmax=1.000
+VerticalBalanceGammaMb=1.300
+[END OF PARTIAL FACTORS EC7 SE VK3]
+[END OF CALCULATION OPTIONS]
+
+[PROBABILISTIC CALCULATION OPTIONS]
+{{ probabilistic_calculation_options }}
+[END OF PROBABILISTIC CALCULATION OPTIONS]
+
+[PROBABILISTIC CONTROL PARAMETERS]
+{{ probabilistic_control_parameters }}
+[END OF PROBABILISTIC CONTROL PARAMETERS]
+
+[END OF INPUT DATA]

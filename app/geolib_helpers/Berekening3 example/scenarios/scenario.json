@@ -1,0 +1,24 @@
+{
+  "Id": "0",
+  "Label": "Scenario 1",
+  "Notes": null,
+  "GeometryId": "13",
+  "SoilLayersId": "20",
+  "Stages": [
+    {
+      "Label": "Stage 1",
+      "Notes": "",
+      "LayerActivationCollectionId": "21",
+      "BoundaryConditionCollectionId": "22"
+    }
+  ],
+  "Calculations": [
+    {
+      "Label": "Calculation 1",
+      "Notes": "",
+      "MeshPropertiesId": "23",
+      "ResultsId": "24"
+    }
+  ],
+  "ContentVersion": "2"
+}

@@ -1,0 +1,13 @@
+@echo off
+
+# Enter correct paths for both the files and script on local machine
+
+C:\Users\Administrator\AppData\Local\Programs\Python\Python310\python.exe C:\Sterke_Lekdijk\TNO_csv_cutter.py
+
+:check_file
+if exist C:\Sterke_Lekdijk\output.csv goto wait_and_close
+ping localhost -n 1 >NUL
+goto :check_file
+
+:wait_and_close
+exit

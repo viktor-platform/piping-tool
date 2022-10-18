@@ -1,0 +1,418 @@
+INPUT FILE FOR D-SETTLEMENT
+==============================================================================
+COMPANY    : {{ company }}
+DATE       : {{ timestamp.strftime('%d-%m-%Y') }}
+TIME       : {{ timestamp.strftime('%H:%M:%S') }}
+FILENAME   : {{ output_fn }}
+CREATED BY : GEOLib version {{ glversion }}
+==========================    BEGINNING OF DATA     ==========================
+[VERSION]
+{% if version is mapping %}
+Soil={{ version.soil }}
+Geometry={{ version.geometry }}
+D-Settlement={{ version.d__settlement }}
+{% else %}
+{{ version }}
+{% endif %}
+[END OF VERSION]
+
+[SOIL COLLECTION]
+{% if soil_collection is mapping %}
+    {{ soil_collection.soil|length }} = number of items
+{% for soil in soil_collection.soil %}
+[SOIL]
+{% if soil_collection is mapping %}
+{% include 'soil_template.j2' %}
+{% else %}
+{{ soil }}
+{% endif %}
+[END OF SOIL]
+{% endfor %}
+{% else %}
+{{ soil_collection }}
+{% endif %}
+[END OF SOIL COLLECTION]
+
+[GEOMETRY DATA]
+
+[ACCURACY]
+{{ geometry_data.accuracy.accuracy }}
+[END OF ACCURACY]
+
+[POINTS]
+{% if geometry_data.points is mapping %}
+{{ '{:>4}'.format( geometry_data.points.points|length) }}  - Number of geometry points -
+{% for point in geometry_data.points.points %}
+{{ '{:>8}'.format(point.id) }}{{ '{:15.3f}'.format(point.X) }}{{ '{:15.3f}'.format(point.Y) }}{{ '{:15.3f}'.format(point.Z) }}
+{% endfor %}
+{% else %}
+{{ geometry_data.points }}
+{% endif %}
+[END OF POINTS]
+
+[CURVES]
+{% if geometry_data.curves is mapping %}
+{{ '{:>4}'.format( geometry_data.curves.curves|length) }} - Number of curves -
+{% for curve in geometry_data.curves.curves %}
+{{ '{:>6}'.format(curve.id) }} - Curve number
+{{ '{:>8}'.format(2) }} - number of points on curve,  next line(s) are pointnumbers
+{{ '{:>10}'.format(curve.points[0]) }}{{ '{:>6}'.format(curve.points[1]) }}
+{% endfor %}
+{% else %}
+{{ geometry_data.curves }}
+{% endif %}
+[END OF CURVES]
+
+[BOUNDARIES]
+{% if geometry_data.boundaries is mapping %}
+{{ '{}'.format(geometry_data.boundaries.boundaries|length).rjust(3) }} - Number of boundaries -
+{% for boundary in geometry_data.boundaries.boundaries %}
+{{ '{}'.format(boundary.id).rjust(5) }} - Boundary number
+{{ '{}'.format(boundary.curves|length).rjust(7) }} - number of curves on boundary, next line(s) are curvenumbers
+{% if boundary.curves|length > 1 %}
+{% for curve in boundary.curves %}
+{% if loop.first %}
+{{ "{}".format(curve).rjust(9) -}}
+{% elif loop.index0 % 10 == 0 %}
+{{ '\n' }}{{ "{}".format(curve).rjust(9) }}
+{% elif loop.last %}
+{{ "{}".format(curve).rjust(6) }}
+{% else %}
+{{ "{}".format(curve).rjust(6) -}}
+{% endif %}
+{% endfor %}
+{% else %}
+{{ '{}'.format(boundary.curves[0]).rjust(9) }}
+{% endif %}
+{% endfor %}
+{% else %}
+{{ geometry_data.boundaries }}
+{% endif %}
+[END OF BOUNDARIES]
+
+[USE PROBABILISTIC DEFAULTS BOUNDARIES]
+{{ '{}'.format(geometry_data.use_probabilistic_defaults_boundaries.useprobabilisticdefaultsboundaries|length).rjust(3) }} - Number of boundaries -
+{% for boundary in geometry_data.use_probabilistic_defaults_boundaries.useprobabilisticdefaultsboundaries %}
+  {{ boundary.value }}
+{% endfor %}
+[END OF USE PROBABILISTIC DEFAULTS BOUNDARIES]
+
+[STDV BOUNDARIES]
+{{ '{}'.format(geometry_data.stdv_boundaries.stdvboundaries|length).rjust(3) }} - Number of boundaries -
+{% for boundary in geometry_data.stdv_boundaries.stdvboundaries %}
+   {{ boundary}}
+{% endfor %}
+[END OF STDV BOUNDARIES]
+
+[DISTRIBUTION BOUNDARIES]
+{{ '{}'.format(geometry_data.distribution_boundaries.distributionboundaries|length).rjust(3) }} - Number of boundaries -
+{% for boundary in geometry_data.distribution_boundaries.distributionboundaries %}
+  {{ boundary.value }}
+{% endfor %}
+[END OF DISTRIBUTION BOUNDARIES]
+
+[PIEZO LINES]
+{% if geometry_data.piezo_lines is mapping %}
+{{ '{}'.format( geometry_data.piezo_lines.piezolines|length ).rjust(3) }} - Number of piezometric level lines -
+{% for pl_line in geometry_data.piezo_lines.piezolines -%}
+{{ '{}'.format(pl_line.id).rjust(5) }} - PlLine number
+{{ '{}'.format(pl_line.curves|length).rjust(7) }} - number of curves on PlLine, next line(s) are curvenumbers
+{% if pl_line.curves|length > 1 %}
+{% for curve in pl_line.curves %}
+{% if loop.first %}
+{{ "{}".format(curve).rjust(9) -}}
+{% elif loop.index0 % 10 == 0 %}
+{{ '\n' }}{{ "{}".format(curve).rjust(9) }}
+{% elif loop.last %}
+{{ "{}".format(curve).rjust(6) }}
+{% else %}
+{{ "{}".format(curve).rjust(6) -}}
+{% endif %}
+{% endfor %}
+{% else %}
+{{ '{}'.format(pl_line.curves[0]).rjust(9) }}
+{% endif %}
+{% endfor -%}
+{% else %}
+{{ geometry_data.piezo_lines }}
+{% endif %}
+[END OF PIEZO LINES]
+
+[PHREATIC LINE]
+{{ geometry_data.phreatic_line.phreatic_line }} - Number of the piezometric level line acting as phreatic line -
+[END OF PHREATIC LINE]
+
+[WORLD CO-ORDINATES]
+{{ geometry_data.world_co__ordinates }}
+[END OF WORLD CO-ORDINATES]
+
+[LAYERS]
+{% if geometry_data.layers is mapping %}
+  {{ geometry_data.layers.layers|length }} - Number of layers -
+{% for layer in geometry_data.layers.layers %}
+{{ '{:>6}'.format(layer.id) }} - Layer number, next line is material of layer
+         {{ layer.material }}
+{{ '{:>10}'.format(layer.piezo_top) }} - Piezometric level line at top of layer
+{{ '{:>10}'.format(layer.piezo_bottom) }} - Piezometric level line at bottom of layer
+{{ '{:>10}'.format(layer.boundary_top) }} - Boundarynumber at top of layer
+{{ '{:>10}'.format(layer.boundary_bottom) }} - Boundarynumber at bottom of layer
+{% endfor %}
+{% else %}
+{{ geometry_data.layers }}
+{% endif %}
+[END OF LAYERS]
+
+[LAYERLOADS]
+{{ geometry_data.layerloads }}
+[END OF LAYERLOADS]
+
+[END OF GEOMETRY DATA]
+
+[RUN IDENTIFICATION]
+{{ run_identification }}
+[END OF RUN IDENTIFICATION]
+
+[MODEL]
+{% if model is mapping -%}
+{{ model.dimension.value }} : Dimension = {{ model.dimension.name }}
+{{ model.consolidation_model.value }} : Calculation type = {{ model.consolidation_model.name }}
+{{ model.soil_model.value }} : Model = {{ model.soil_model.name }}
+{{ model.strain_type.value }} : Strain type = {{ model.strain_type.name }}
+{{ model.is_vertical_drains.value }} : Vertical drains = {{ model.is_vertical_drains.name }}
+{{ model.is_fit_for_settlement_plate.value }} : Fit for settlement plate = {{ model.is_fit_for_settlement_plate.name }}
+{{ model.is_probabilistic.value }} : Probabilistic = {{ model.is_probabilistic.name }}
+{{ model.is_horizontal_displacements.value }} : Horizontal displacements = {{ model.is_horizontal_displacements.name }}
+{{ model.is_secondary_swelling.value }} : Secondary swelling = {{ model.is_secondary_swelling.name }}
+{{ model.is_waspan.value }} : Waspan = {{ model.is_waspan.name }}
+{% else -%}
+{{ model }}
+{% endif %}
+[END OF MODEL]
+
+[VERTICALS]
+{% if verticals is mapping %}
+    {{ verticals.total_mesh }} = total Mesh
+    {{ verticals.locations|length }} = number of items
+{% for location in verticals.locations %}
+       {{ location.X}}        {{ location.Z }} = X, Z
+{% endfor %}
+{% else %}
+{{ verticals }}
+{% endif %}
+[END OF VERTICALS]
+
+[WATER]
+{{ water }}
+[END OF WATER]
+
+[NON-UNIFORM LOADS]
+{% if non__uniform_loads is mapping %}
+    {{ non__uniform_loads.loads|length }} = number of items
+{% for name, non__uniform_load in non__uniform_loads.loads.items() %}
+{{ name }}
+          {{ non__uniform_load.time }}  {{ non__uniform_load.gammadry }}  {{ non__uniform_load.gammawet }}  {{ non__uniform_load.temporary.value }}   {{ non__uniform_load.endtime }} = Time, Gamma dry, Gamma wet, Temporary, Endtime
+    {{ non__uniform_load.points|length }} = Number of co-ordinates
+{% for point in non__uniform_load.points %}
+       {{ point.X }}    {{ point.Y }} = X, Y
+{% endfor %}
+{% endfor %}
+{% else %}
+{{ non__uniform_loads }}
+{% endif %}
+[END OF NON-UNIFORM LOADS]
+
+[WATER LOADS]
+{% if water_loads is mapping %}
+    {{ water_loads.waterloads|length }} = number of items
+{% for water_load in water_loads.waterloads %}
+{{ water_load.name }}
+{{ '{:5}'.format(water_load.time) }} = Time
+{{ '{:5}'.format(water_load.phreatic_line) }} = Phreatic line
+{{ '{:5}'.format(water_load.headlines|length) }} = number of items
+{% for head_line in water_load.headlines %}
+
+{{ '{:8}'.format(head_line[0]) }}{{ '{:8}'.format(head_line[1]) }} = PL-line top, PL-line bottom
+{% endfor %}
+{% endfor %}
+{% else %}
+{{ water_loads }}
+{% endif %}
+[END OF WATER LOADS]
+
+[OTHER LOADS]
+{% if other_loads.loads is mapping %}
+{{ other_loads.loads|length }} = number of items
+{% for name, load in other_loads.loads.items() %}
+{{ name }}
+{% if load.load_type.value == 0 %}
+0 : Trapeziform
+{{ load.time }} {{ load.load_values_trapeziform.gamma }} {{ load.load_values_trapeziform.height }} = Time, Gamma, H
+{{ load.load_values_trapeziform.xl }} {{ load.load_values_trapeziform.xm }} {{ load.load_values_trapeziform.xr }} {{ load.load_values_trapeziform.Xp }} {{ load.load_values_trapeziform.Yp }}  = xl, xm, xr, Xp, Yp
+{% endif %}
+{% if load.load_type.value == 1 %}
+1 : Circular
+{{ load.time }} {{ load.load_values_circular.weight }} {{ load.load_values_circular.alpha }} = Time, Weight, Alpha
+{{ load.load_values_circular.Xcp }} {{ load.load_values_circular.Ycp }} {{ load.load_values_circular.Zcp }} {{ load.load_values_circular.R }} = Xcp, Ycp, Zcp, R
+{% endif %}
+{% if load.load_type.value == 2 %}
+2 : Rectangular
+{{ load.time }} {{ load.load_values_rectangular.weight }} {{ load.load_values_rectangular.alpha }} = Time, Weight, Alpha
+{{ load.load_values_rectangular.Xcp }} {{ load.load_values_rectangular.Ycp }} {{ load.load_values_rectangular.Zcp }} {{ load.load_values_rectangular.xwidth }} {{ load.load_values_rectangular.zwidth }} = Xcp, Ycp, Zcp, xwidth, zwidth
+{% endif %}
+{% if load.load_type.value == 3 %}
+3 : Uniform
+{{ load.time }} {{ load.load_values_uniform.gamma }} {{ load.load_values_uniform.height }} {{ load.load_values_uniform.y_application }} = Time, Gamma, H, Yapplication
+{% endif %}
+{% if load.load_type.value == 4 %}
+4 : Tank
+{{ load.time }} {{ load.load_values_tank.gamma }} {{ load.load_values_tank.wallheight }} {{ load.load_values_tank.interalweight }} {{ load.load_values_tank.alpha }} = Time, WallWeight, InternalWeight, Alpha
+{{ load.load_values_tank.Xcp }} {{ load.load_values_tank.Ycp }} {{ load.load_values_tank.Zcp }} {{ load.load_values_tank.Rintern }} {{ load.load_values_tank.dWall }}= Xcp, Ycp, Zcp, Rintern, DWall
+{% endif %}
+{% endfor %}
+{% else %}
+{{ other_loads }}
+{% endif %}
+[END OF OTHER LOADS]
+
+[CALCULATION OPTIONS]
+{% if calculation_options is mapping -%}
+{{ calculation_options.precon_pressure_within_layer.value }} : Precon. pressure within a layer = {{ calculation_options.precon_pressure_within_layer.name }}
+{{ calculation_options.is_imaginary_surface.value }} : Imaginary surface = {{ calculation_options.is_imaginary_surface.name }}
+{% if calculation_options.imaginary_surface_layer is not none %}
+{{ calculation_options.imaginary_surface_layer.value }} : Imaginary surface layer =  {{ calculation_options.imaginary_surface_layer.name }}
+{% endif %}
+{{ calculation_options.is_submerging.value }} : Submerging =  {{ calculation_options.is_submerging.name }}
+{{ calculation_options.use_end_time_for_fit.value }} : Use end time for fit =  {{ calculation_options.use_end_time_for_fit.name }}
+{{ calculation_options.is_maintain_profile.value }} : Maintain profile =  {{ calculation_options.is_maintain_profile.name }}
+{{ calculation_options.maintain_profile_material_name }}
+{{ calculation_options.maintain_profile_time }} = Time {{ calculation_options.maintain_profile_material_name }}
+{{ calculation_options.maintain_profile_gamma_dry }} = Gamma dry {{ calculation_options.maintain_profile_material_name }}
+{{ calculation_options.maintain_profile_gamma_wet }} = Gamma wet {{ calculation_options.maintain_profile_material_name }}
+{{ calculation_options.dispersion_conditions_layer_boundaries_top.value }} : Dispersion conditions layer boundaries top = {{ calculation_options.dispersion_conditions_layer_boundaries_top.name }}
+{{ calculation_options.dispersion_conditions_layer_boundaries_bottom.value }} : Dispersion conditions layer boundaries bottom = {{ calculation_options.dispersion_conditions_layer_boundaries_bottom.name }}
+{{ calculation_options.stress_distribution_soil.value }}  : Stress distribution soil = {{ calculation_options.stress_distribution_soil.name }}
+{{ calculation_options.stress_distribution_loads.value }}  : Stress distribution loads = {{ calculation_options.stress_distribution_loads.name }}
+{{ calculation_options.iteration_stop_criteria_submerging }} = Iteration stop criteria submerging [m]
+{{ calculation_options.iteration_stop_criteria_submerging_layer_height }} = Iteration stop criteria submerging minimum layer height [m]
+{{ calculation_options.maximum_iteration_steps_for_submerging }} = Maximum iteration steps for submerging
+{{ calculation_options.iteration_stop_criteria_desired_profile }} = Iteration stop criteria desired profile [m]
+{{ calculation_options.load_column_width_imaginary_surface }} = Load column width imaginary surface [m]
+{{ calculation_options.load_column_width_non_uniform_loads }} = Load column width non-uniform loads [m]
+{{ calculation_options.load_column_width_trapeziform_loads }} = Load column width trapeziform loads [m]
+{{ calculation_options.end_of_consolidation }} = End of consolidation [days]
+{{ calculation_options.number_of_subtime_steps }} = Number of subtime steps
+{{ calculation_options.reference_time }} = Reference time
+{{ calculation_options.dissipation.value }} : Dissipation = {{ calculation_options.dissipation.name }}
+{{ calculation_options.x_coord_dissipation }} = X co-ordinate dissipation
+{{ calculation_options.use_fit_factors.value }} : Use fit factors = {{ calculation_options.use_fit_factors.name }}
+{{ calculation_options.x_coord_fit }} = X co-ordinate fit
+{{ calculation_options.is_predict_settlements_omitting_additional_load_steps.value }} : Predict settlements omitting additional loadsteps = {{ calculation_options.is_predict_settlements_omitting_additional_load_steps.name }}
+{% else %}
+{{ calculation_options }}
+{% endif -%}
+[END OF CALCULATION OPTIONS]
+
+[RESIDUAL TIMES]
+{% if residual_times is mapping %}
+{{ residual_times.time_steps | length }} : Number of items
+{% for time_step in residual_times.time_steps %}
+    {{ time_step }}
+{% endfor %}
+{% else %}
+{{ residual_times }}
+{% endif %}
+[END OF RESIDUAL TIMES]
+
+[FILTER BAND WIDTH]
+{{ filter_band_width }}
+[END OF FILTER BAND WIDTH]
+
+[PORE PRESSURE METERS]
+{{ pore_pressure_meters }}
+[END OF PORE PRESSURE METERS]
+
+[NON-UNIFORM LOADS PORE PRESSURES]
+{{ non__uniform_loads_pore_pressures }}
+[END OF NON-UNIFORM LOADS PORE PRESSURES]
+
+[OTHER LOADS PORE PRESSURES]
+{{ other_loads_pore_pressures }}
+[END OF OTHER LOADS PORE PRESSURES]
+
+[CALCULATION OPTIONS PORE PRESSURES]
+{{ calculation_options_pore_pressures }}
+[END OF CALCULATION OPTIONS PORE PRESSURES]
+
+[VERTICAL DRAIN]
+{% if vertical_drain is mapping %}
+{{ vertical_drain.drain_type.value }} : Flow type
+      {{ '{:15.3f}'.format(vertical_drain.bottom_position) }} = Bottom position
+       0.000 = Position of the drain pipe
+      {{ '{:15.3f}'.format(vertical_drain.range_from) }} = Position of the leftmost drain
+      {{ '{:15.3f}'.format(vertical_drain.range_to) }} = Position of the rightmost drain
+      {{ '{:15.3f}'.format(vertical_drain.center_to_center) }} = Center to center distance
+      {{ '{:15.3f}'.format(vertical_drain.diameter) }} = Diameter
+      {{ '{:15.3f}'.format(vertical_drain.width) }} = Width
+      {{ '{:15.3f}'.format(vertical_drain.thickness) }} = Thickness
+{{ vertical_drain.grid.value }} = Grid
+      {{ '{:15.3f}'.format(vertical_drain.begin_time) }} = Begin time
+      {{ '{:15.3f}'.format(vertical_drain.end_time) }} = End time
+      {{ '{:15.3f}'.format(vertical_drain.under_pressure_for_strips_and_columns) }} = Under pressure for strips and columns
+      {{ '{:15.3f}'.format(vertical_drain.under_pressure_for_sand_wall) }} = Under pressure for sand wall
+      {{ '{:15.3f}'.format(vertical_drain.start_of_drainage) }} = Start of drainage
+      {{ '{:15.3f}'.format(vertical_drain.phreatic_level_in_drain) }} = Phreatic level in drain
+      {{ '{:15.3f}'.format(vertical_drain.water_head_during_dewatering) }} = Water head during dewatering
+    {{ '{:15.3f}'.format(vertical_drain.tube_pressure_during_dewatering) }} = Tube pressure during dewatering
+{{ vertical_drain.schedule_type.value }} : Flow type
+{% if vertical_drain.time is defined %}
+{{vertical_drain.time | length }} = number of items
+{% for i in vertical_drain.time %}
+      {% set time_step = vertical_drain.time[loop.index-1] %}
+      {% set underpressure_item = vertical_drain.underpressure[loop.index-1] %}
+      {% set water_level_item = vertical_drain.water_level[loop.index-1] %}
+     {{'{:15.3f}'.format(time_step)}}       {{'{:15.3f}'.format(underpressure_item)}}   {{'{:15.3f}'.format(water_level_item)}}   0.000 = Time, Under pressure, Water level, Tube pressure
+{% endfor %}
+{% else %}
+{# This section represent the defaults so when the drain schedule time selected is not of "Detailed input"#}
+1 = number of items
+     0.000       40.000      0.000      0.00 = Time, Under pressure, Water level, Tube pressure
+{% endif %}
+{% else %}
+{{ vertical_drain }}
+{% endif %}
+[END OF VERTICAL DRAIN]
+
+[PROBABILISTIC DATA]
+{% if probabilistic_data is mapping %}
+Reliability X Co-ordinate={{"%10.3f"|format(probabilistic_data.reliability_x_co__ordinate)}}
+Residual Settlement={{"%10.2f"|format(probabilistic_data.residual_settlement)}}
+Maximum Drawings={{probabilistic_data.maximum_drawings}}
+Maximum Iterations={{probabilistic_data.maximum_iterations}}
+Reliability Type={{probabilistic_data.reliability_type.value}}
+Is Reliability Calculation={{probabilistic_data.is_reliability_calculation.value}}
+{% else %}
+{{ probabilistic_data }}
+{% endif %}
+[END OF PROBABILISTIC DATA]
+
+[PROBABILISTIC DEFAULTS]
+{{ probabilistic_defaults }}
+[END OF PROBABILISTIC DEFAULTS]
+
+[FIT OPTIONS]
+{{ fit_options }}
+[END OF FIT OPTIONS]
+
+[FIT CALCULATION]
+{{ fit_calculation }}
+[END OF FIT CALCULATION]
+
+[EPS]
+{{ eps }}
+[END OF EPS]
+
+[FIT]
+{{ fit }}
+[END OF FIT]
+
+[END OF INPUT FILE]

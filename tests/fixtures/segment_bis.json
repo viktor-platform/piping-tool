@@ -1,0 +1,276 @@
+{
+  "segment_polygon": [
+    {
+      "lat": 51.964298715064004,
+      "lon": 4.959893625596665
+    },
+    {
+      "lat": 51.963315047517824,
+      "lon": 4.959614521850652
+    },
+    {
+      "lat": 51.96304333134866,
+      "lon": 4.9617970817880686
+    },
+    {
+      "lat": 51.96311212040788,
+      "lon": 4.963203744458608
+    },
+    {
+      "lat": 51.964088913657164,
+      "lon": 4.963237236427115
+    },
+    {
+      "lat": 51.964298715064004,
+      "lon": 4.959893625596665
+    }
+  ],
+  "start_chainage": 1000,
+  "end_chainage": 1100,
+  "input_selection": {
+    "general": {
+      "show_entry_exit_lines": true,
+      "show_selected_ditches": false,
+      "show_ground_model": false,
+      "show_cpts": false
+    },
+    "materials": {
+      "bottom_level_query": -30,
+      "table": [
+        {
+          "name": "Deklaag",
+          "color": "128,128,128",
+          "aquifer": false,
+          "gamma_dry": 16,
+          "gamma_wet": 16,
+          "k_hor": 0.05,
+          "k_vert": 0.005,
+          "d_70": null
+        },
+        {
+          "name": "Holoceen zand",
+          "color": "243, 225, 6",
+          "aquifer": true,
+          "gamma_dry": 17,
+          "gamma_wet": 19,
+          "k_hor": 2.59,
+          "k_vert": 0.86,
+          "d_70": 0.25
+        },
+        {
+          "name": "Pleistoceen zand",
+          "color": "231,195,22",
+          "aquifer": true,
+          "gamma_dry": 19,
+          "gamma_wet": 21,
+          "k_hor": 2.59,
+          "k_vert": 0.86,
+          "d_70": 0.33
+        },
+        {
+          "name": "Klei diep",
+          "color": "0,146,0",
+          "aquifer": false,
+          "gamma_dry": 16,
+          "gamma_wet": 16,
+          "k_hor": 1e-05,
+          "k_vert": 1e-05,
+          "d_70": null
+        },
+        {
+          "name": "inter",
+          "color": "194,207,9",
+          "aquifer": false,
+          "gamma_dry": 16,
+          "gamma_wet": 16,
+          "k_hor": 0.0001,
+          "k_vert": 0.0001,
+          "d_70": null
+        }
+      ],
+      "classification_table": [
+        {
+          "layer": "Niet geclassificeerd",
+          "top_of_layer": "-",
+          "bottom_of_layer": "-",
+          "soil_type": "Deklaag"
+        },
+        {
+          "layer": "Veen",
+          "top_of_layer": "-",
+          "bottom_of_layer": "-",
+          "soil_type": "Deklaag"
+        },
+        {
+          "layer": "Klei",
+          "top_of_layer": "-",
+          "bottom_of_layer": "-2",
+          "soil_type": "Deklaag"
+        },
+        {
+          "layer": "Klei",
+          "top_of_layer": "-2",
+          "bottom_of_layer": "-",
+          "soil_type": "Deklaag"
+        },
+        {
+          "layer": "Kleiig zand/ zandige klei",
+          "top_of_layer": "-",
+          "bottom_of_layer": "-1",
+          "soil_type": "Klei diep"
+        },
+        {
+          "layer": "Kleiig zand/ zandige klei",
+          "top_of_layer": "-1",
+          "bottom_of_layer": "-",
+          "soil_type": "Klei diep"
+        },
+        {
+          "layer": "Fijn zand",
+          "top_of_layer": "-",
+          "bottom_of_layer": "-2.5",
+          "soil_type": "Holoceen zand"
+        },
+        {
+          "layer": "Matig grof zand",
+          "top_of_layer": "-",
+          "bottom_of_layer": "-2.5",
+          "soil_type": "Holoceen zand"
+        },
+        {
+          "layer": "Grof zand",
+          "top_of_layer": "-",
+          "bottom_of_layer": "-2.5",
+          "soil_type": "Pleistoceen zand"
+        },
+        {
+          "layer": "Fijn zand",
+          "top_of_layer": "-2.5",
+          "bottom_of_layer": "-",
+          "soil_type": "Holoceen zand"
+        },
+        {
+          "layer": "Matig grof zand",
+          "top_of_layer": "-2.5",
+          "bottom_of_layer": "-",
+          "soil_type": "Holoceen zand"
+        },
+        {
+          "layer": "Grof zand",
+          "top_of_layer": "-2.5",
+          "bottom_of_layer": "-",
+          "soil_type": "Pleistoceen zand"
+        }
+      ]
+    },
+    "soil_schematization": {
+      "distance_from_start": 50,
+      "soil_scen_array": [
+        {
+          "name_of_scenario": "Scenario 1",
+          "weight_of_scenario": null,
+          "bottom_of_soil_layout": -10.125,
+          "soil_layout_table": [
+            {
+              "name": "Deklaag",
+              "top_of_layer": 5.125,
+              "aquifer": false
+            },
+            {
+              "name": "Holoceen zand",
+              "top_of_layer": -0.375,
+              "aquifer": true
+            },
+            {
+              "name": "inter",
+              "top_of_layer": -3.625,
+              "aquifer": false
+            },
+            {
+              "name": "Pleistoceen zand",
+              "top_of_layer": -5.125,
+              "aquifer": true
+            }
+          ],
+          "first_aquifer_permeability": 2.5900000000000003,
+          "first_aquifer_d70": 0.25,
+          "second_aquifer_activate": true,
+          "second_aquifer_permeability": 2.59,
+          "second_aquifer_d70": 0.33
+        }
+      ],
+      "scenario_to_visualise": 0
+    }
+  },
+  "minimal_aquifer_thickness": 1,
+  "segment_ditches": null,
+  "segment_dry_ditches": null,
+  "select_with_buffer_zone": false,
+  "buffer_zone": 150,
+  "geohydrology_method": "1",
+  "river_level": 0,
+  "polder_level": -1,
+  "damping_factor": 1,
+  "dike_width": 5,
+  "soil_schematization": {
+    "geohydrology": {
+      "level2": {
+        "leakage_length_array": [
+          {
+            "leakage_length_foreland_aquifer_1": 20,
+            "leakage_length_hinterland_aquifer_1": 20,
+            "leakage_length_foreland_aquifer_2": 20,
+            "leakage_length_hinterland_aquifer_2": 20
+          }
+        ]
+      }
+    },
+    "leakage_length_map": {
+      "visible_param": "from_material_table",
+      "scenario": 0
+    }
+  },
+  "geohydrology_selected_model": "test",
+  "foreland_length_schematization": 25,
+  "hinterland_length_schematization": 25,
+  "representative_layout": null,
+  "leakage_point_to_visualise": 1,
+  "use_representative_layout": true,
+  "is_hinterland_grid": true,
+  "exit_point_creation": {
+    "exit_point_tab": {
+      "length_hinterland": 50,
+      "buffer_length_hinterland": 10
+    },
+    "general": {
+      "show_entry_exit_lines": true,
+      "show_selected_ditches": false,
+      "show_ground_model": false,
+      "show_cpts": false,
+      "show_existing_exit_points": true
+    }
+  },
+  "hinterland_delta_x": 20,
+  "hinterland_delta_y": 20,
+  "is_manual_exit_point": false,
+  "manual_exit_point": null,
+  "is_ditch_points": false,
+  "delta_ditch": 15,
+  "counter_exit_point_entities": 12,
+  "calculations": {
+    "soil_profile": {
+      "results_settings": {
+        "composite_result_switch": false,
+        "scenario_selection": 0
+      },
+      "visualisation_settings": {
+        "select_single_exit_point": null,
+        "bottom_soil_layout": null,
+        "soil_layout_table": [],
+        "select_exit_point_polygon": null
+      }
+    }
+  },
+  "show_cpt": false,
+  "selected_cpt_id": null
+}

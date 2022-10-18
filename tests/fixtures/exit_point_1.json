@@ -1,0 +1,1648 @@
+{
+  "exit_point_data": {
+    "x_coordinate": 125694.68005327464,
+    "y_coordinate": 441831.1866900831,
+    "ground_level": 0
+  },
+  "tno_soil_layout": {
+    "layers": [
+      {
+        "soil": {
+          "name": "Niet geclassificeerd",
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.799999237060547,
+          "aquifer": false,
+          "vertical_permeability": 1.6089999675750732,
+          "horizontal_permeability": 1.6089999675750732,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 2.125,
+        "bottom_of_layer": 1.875
+      },
+      {
+        "soil": {
+          "name": "Niet geclassificeerd",
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.799999237060547,
+          "aquifer": false,
+          "vertical_permeability": 1.6089999675750732,
+          "horizontal_permeability": 1.6089999675750732,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 1.875,
+        "bottom_of_layer": 1.625
+      },
+      {
+        "soil": {
+          "name": "Niet geclassificeerd",
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.799999237060547,
+          "aquifer": false,
+          "vertical_permeability": 1.6089999675750732,
+          "horizontal_permeability": 1.6089999675750732,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 1.625,
+        "bottom_of_layer": 1.375
+      },
+      {
+        "soil": {
+          "name": "Niet geclassificeerd",
+          "color": [
+            0,
+            0,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.799999237060547,
+          "aquifer": false,
+          "vertical_permeability": 1.6089999675750732,
+          "horizontal_permeability": 1.6089999675750732,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 1.375,
+        "bottom_of_layer": 1.125
+      },
+      {
+        "soil": {
+          "name": "Kleiig zand/ zandige klei",
+          "color": [
+            194,
+            207,
+            92
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.209999084472656,
+          "aquifer": false,
+          "vertical_permeability": -3.2190001010894775,
+          "horizontal_permeability": -3.2190001010894775,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 1.125,
+        "bottom_of_layer": 0.875
+      },
+      {
+        "soil": {
+          "name": "Kleiig zand/ zandige klei",
+          "color": [
+            194,
+            207,
+            92
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.209999084472656,
+          "aquifer": false,
+          "vertical_permeability": -3.2190001010894775,
+          "horizontal_permeability": -3.2190001010894775,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 0.875,
+        "bottom_of_layer": 0.625
+      },
+      {
+        "soil": {
+          "name": "Grof zand",
+          "color": [
+            231,
+            195,
+            22
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.59000015258789,
+          "aquifer": true,
+          "vertical_permeability": 3.384000062942505,
+          "horizontal_permeability": 3.384000062942505,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 0.625,
+        "bottom_of_layer": 0.375
+      },
+      {
+        "soil": {
+          "name": "Kleiig zand/ zandige klei",
+          "color": [
+            194,
+            207,
+            92
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.209999084472656,
+          "aquifer": false,
+          "vertical_permeability": -3.2190001010894775,
+          "horizontal_permeability": -3.2190001010894775,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 0.375,
+        "bottom_of_layer": 0.125
+      },
+      {
+        "soil": {
+          "name": "Kleiig zand/ zandige klei",
+          "color": [
+            194,
+            207,
+            92
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.209999084472656,
+          "aquifer": false,
+          "vertical_permeability": -3.2190001010894775,
+          "horizontal_permeability": -3.2190001010894775,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 0.125,
+        "bottom_of_layer": -0.125
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.93000030517578,
+          "aquifer": true,
+          "vertical_permeability": 2.441999912261963,
+          "horizontal_permeability": 2.441999912261963,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -0.125,
+        "bottom_of_layer": -0.375
+      },
+      {
+        "soil": {
+          "name": "Kleiig zand/ zandige klei",
+          "color": [
+            194,
+            207,
+            92
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.209999084472656,
+          "aquifer": false,
+          "vertical_permeability": -3.2190001010894775,
+          "horizontal_permeability": -3.2190001010894775,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -0.375,
+        "bottom_of_layer": -0.625
+      },
+      {
+        "soil": {
+          "name": "Kleiig zand/ zandige klei",
+          "color": [
+            194,
+            207,
+            92
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.209999084472656,
+          "aquifer": false,
+          "vertical_permeability": -3.2190001010894775,
+          "horizontal_permeability": -3.2190001010894775,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -0.625,
+        "bottom_of_layer": -0.875
+      },
+      {
+        "soil": {
+          "name": "Klei",
+          "color": [
+            0,
+            146,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 16.6299991607666,
+          "aquifer": false,
+          "vertical_permeability": -5.381999969482422,
+          "horizontal_permeability": -5.381999969482422,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -0.875,
+        "bottom_of_layer": -1.125
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -1.125,
+        "bottom_of_layer": -1.375
+      },
+      {
+        "soil": {
+          "name": "Kleiig zand/ zandige klei",
+          "color": [
+            194,
+            207,
+            92
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.209999084472656,
+          "aquifer": false,
+          "vertical_permeability": -5.520999908447266,
+          "horizontal_permeability": -3.2190001010894775,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -1.375,
+        "bottom_of_layer": -1.625
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -1.625,
+        "bottom_of_layer": -1.875
+      },
+      {
+        "soil": {
+          "name": "Kleiig zand/ zandige klei",
+          "color": [
+            194,
+            207,
+            92
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.209999084472656,
+          "aquifer": false,
+          "vertical_permeability": -5.520999908447266,
+          "horizontal_permeability": -3.2190001010894775,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -1.875,
+        "bottom_of_layer": -2.125
+      },
+      {
+        "soil": {
+          "name": "Kleiig zand/ zandige klei",
+          "color": [
+            194,
+            207,
+            92
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 18.209999084472656,
+          "aquifer": false,
+          "vertical_permeability": -5.520999908447266,
+          "horizontal_permeability": -3.2190001010894775,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -2.125,
+        "bottom_of_layer": -2.375
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -2.375,
+        "bottom_of_layer": -2.625
+      },
+      {
+        "soil": {
+          "name": "Grof zand",
+          "color": [
+            231,
+            195,
+            22
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.59000015258789,
+          "aquifer": true,
+          "vertical_permeability": 2.380000114440918,
+          "horizontal_permeability": 3.072999954223633,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -2.625,
+        "bottom_of_layer": -2.875
+      },
+      {
+        "soil": {
+          "name": "Grof zand",
+          "color": [
+            231,
+            195,
+            22
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.59000015258789,
+          "aquifer": true,
+          "vertical_permeability": 2.380000114440918,
+          "horizontal_permeability": 3.072999954223633,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -2.875,
+        "bottom_of_layer": -3.125
+      },
+      {
+        "soil": {
+          "name": "Grof zand",
+          "color": [
+            231,
+            195,
+            22
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.59000015258789,
+          "aquifer": true,
+          "vertical_permeability": 2.380000114440918,
+          "horizontal_permeability": 3.072999954223633,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -3.125,
+        "bottom_of_layer": -3.375
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -3.375,
+        "bottom_of_layer": -3.625
+      },
+      {
+        "soil": {
+          "name": "Grof zand",
+          "color": [
+            231,
+            195,
+            22
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.59000015258789,
+          "aquifer": true,
+          "vertical_permeability": 2.380000114440918,
+          "horizontal_permeability": 3.072999954223633,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -3.625,
+        "bottom_of_layer": -3.875
+      },
+      {
+        "soil": {
+          "name": "Grof zand",
+          "color": [
+            231,
+            195,
+            22
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.59000015258789,
+          "aquifer": true,
+          "vertical_permeability": 2.380000114440918,
+          "horizontal_permeability": 3.072999954223633,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -3.875,
+        "bottom_of_layer": -4.125
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -4.125,
+        "bottom_of_layer": -4.375
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -4.375,
+        "bottom_of_layer": -4.625
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -4.625,
+        "bottom_of_layer": -4.875
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -4.875,
+        "bottom_of_layer": -5.125
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -5.125,
+        "bottom_of_layer": -5.375
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -5.375,
+        "bottom_of_layer": -5.625
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -5.625,
+        "bottom_of_layer": -5.875
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -5.875,
+        "bottom_of_layer": -6.125
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -6.125,
+        "bottom_of_layer": -6.375
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -6.375,
+        "bottom_of_layer": -6.625
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -6.625,
+        "bottom_of_layer": -6.875
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -6.875,
+        "bottom_of_layer": -7.125
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -7.125,
+        "bottom_of_layer": -7.375
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -7.375,
+        "bottom_of_layer": -7.625
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -7.625,
+        "bottom_of_layer": -7.875
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -7.875,
+        "bottom_of_layer": -8.125
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -8.125,
+        "bottom_of_layer": -8.375
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -8.375,
+        "bottom_of_layer": -8.625
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -8.625,
+        "bottom_of_layer": -8.875
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -8.875,
+        "bottom_of_layer": -9.125
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -9.125,
+        "bottom_of_layer": -9.375
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -9.375,
+        "bottom_of_layer": -9.625
+      },
+      {
+        "soil": {
+          "name": "Matig grof zand",
+          "color": [
+            243,
+            225,
+            6
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "gamma": 19.690000534057617,
+          "aquifer": true,
+          "vertical_permeability": 1.1629999876022339,
+          "horizontal_permeability": 2.7850000858306885,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -9.625,
+        "bottom_of_layer": -10.125
+      }
+    ]
+  },
+  "classified_soil_layout": {
+    "layers": [
+      {
+        "soil": {
+          "name": "Deklaag",
+          "color": [
+            157,
+            78,
+            64
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 16,
+          "gamma_wet": 16,
+          "grain_size_d70": null,
+          "vertical_permeability": 1e-08,
+          "horizontal_permeability": 1e-08,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 2.125,
+        "bottom_of_layer": 1.125
+      },
+      {
+        "soil": {
+          "name": "Klei diep",
+          "color": [
+            157,
+            78,
+            64
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 16,
+          "gamma_wet": 16,
+          "grain_size_d70": null,
+          "vertical_permeability": 1e-08,
+          "horizontal_permeability": 1e-08,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 1.125,
+        "bottom_of_layer": 0.625
+      },
+      {
+        "soil": {
+          "name": "Pleistoceen zand",
+          "color": [
+            255,
+            255,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 19,
+          "gamma_wet": 21,
+          "grain_size_d70": 330,
+          "vertical_permeability": 0.0001,
+          "horizontal_permeability": 0.0001,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 0.625,
+        "bottom_of_layer": 0.375
+      },
+      {
+        "soil": {
+          "name": "Klei diep",
+          "color": [
+            157,
+            78,
+            64
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 16,
+          "gamma_wet": 16,
+          "grain_size_d70": null,
+          "vertical_permeability": 1e-08,
+          "horizontal_permeability": 1e-08,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": 0.375,
+        "bottom_of_layer": -0.125
+      },
+      {
+        "soil": {
+          "name": "Holoceen zand",
+          "color": [
+            255,
+            255,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 17,
+          "gamma_wet": 19,
+          "grain_size_d70": 250,
+          "vertical_permeability": 0.0001,
+          "horizontal_permeability": 0.0001,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -0.125,
+        "bottom_of_layer": -0.375
+      },
+      {
+        "soil": {
+          "name": "Klei diep",
+          "color": [
+            157,
+            78,
+            64
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 16,
+          "gamma_wet": 16,
+          "grain_size_d70": null,
+          "vertical_permeability": 1e-08,
+          "horizontal_permeability": 1e-08,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -0.375,
+        "bottom_of_layer": -0.875
+      },
+      {
+        "soil": {
+          "name": "Deklaag",
+          "color": [
+            157,
+            78,
+            64
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 16,
+          "gamma_wet": 16,
+          "grain_size_d70": null,
+          "vertical_permeability": 1e-08,
+          "horizontal_permeability": 1e-08,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -0.875,
+        "bottom_of_layer": -1.125
+      },
+      {
+        "soil": {
+          "name": "Holoceen zand",
+          "color": [
+            255,
+            255,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 17,
+          "gamma_wet": 19,
+          "grain_size_d70": 250,
+          "vertical_permeability": 0.0001,
+          "horizontal_permeability": 0.0001,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -1.125,
+        "bottom_of_layer": -1.375
+      },
+      {
+        "soil": {
+          "name": "Klei diep",
+          "color": [
+            157,
+            78,
+            64
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 16,
+          "gamma_wet": 16,
+          "grain_size_d70": null,
+          "vertical_permeability": 1e-08,
+          "horizontal_permeability": 1e-08,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -1.375,
+        "bottom_of_layer": -1.625
+      },
+      {
+        "soil": {
+          "name": "Holoceen zand",
+          "color": [
+            255,
+            255,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 17,
+          "gamma_wet": 19,
+          "grain_size_d70": 250,
+          "vertical_permeability": 0.0001,
+          "horizontal_permeability": 0.0001,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -1.625,
+        "bottom_of_layer": -1.875
+      },
+      {
+        "soil": {
+          "name": "Klei diep",
+          "color": [
+            157,
+            78,
+            64
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 16,
+          "gamma_wet": 16,
+          "grain_size_d70": null,
+          "vertical_permeability": 1e-08,
+          "horizontal_permeability": 1e-08,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -1.875,
+        "bottom_of_layer": -2.375
+      },
+      {
+        "soil": {
+          "name": "Holoceen zand",
+          "color": [
+            255,
+            255,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 17,
+          "gamma_wet": 19,
+          "grain_size_d70": 250,
+          "vertical_permeability": 0.0001,
+          "horizontal_permeability": 0.0001,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -2.375,
+        "bottom_of_layer": -2.625
+      },
+      {
+        "soil": {
+          "name": "Pleistoceen zand",
+          "color": [
+            255,
+            255,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 19,
+          "gamma_wet": 21,
+          "grain_size_d70": 330,
+          "vertical_permeability": 0.0001,
+          "horizontal_permeability": 0.0001,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -2.625,
+        "bottom_of_layer": -3.375
+      },
+      {
+        "soil": {
+          "name": "Holoceen zand",
+          "color": [
+            255,
+            255,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 17,
+          "gamma_wet": 19,
+          "grain_size_d70": 250,
+          "vertical_permeability": 0.0001,
+          "horizontal_permeability": 0.0001,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -3.375,
+        "bottom_of_layer": -3.625
+      },
+      {
+        "soil": {
+          "name": "Pleistoceen zand",
+          "color": [
+            255,
+            255,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": false,
+          "gamma_dry": 19,
+          "gamma_wet": 21,
+          "grain_size_d70": 330,
+          "vertical_permeability": 0.0001,
+          "horizontal_permeability": 0.0001,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -3.625,
+        "bottom_of_layer": -4.125
+      },
+      {
+        "soil": {
+          "name": "Holoceen zand",
+          "color": [
+            255,
+            255,
+            0
+          ],
+          "properties": {}
+        },
+        "properties": {
+          "aquifer": true,
+          "gamma_dry": 17,
+          "gamma_wet": 19,
+          "grain_size_d70": 250,
+          "vertical_permeability": 0.0001,
+          "horizontal_permeability": 0.0001,
+          "kans_1_veen": 20.00,
+          "kans_2_klei": 20.00,
+          "kans_3_kleiig_zand": 20.00,
+          "kans_5_zand_fijn": 20.00,
+          "kans_6_zand_matig_grof": 20.00,
+          "kans_7_zand_grof": 0.00
+        },
+        "top_of_layer": -4.125,
+        "bottom_of_layer": -10.125
+      }
+    ]
+  },
+  "name": "Exit Point0"
+}

@@ -1,0 +1,6 @@
+executables:
+  TNO_csv_cutter:
+    path: 'C:\Sterke_Lekdijk\csv_cutter.bat'
+    arguments:
+    workingDirectoryPath: 'C:\Sterke_Lekdijk\'
+maxParallelProcesses: 1
