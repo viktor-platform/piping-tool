@@ -1,3 +1,5 @@
+![](https://img.shields.io/badge/SDK-v13.2.0-blue) <Please check version is the same as specified in requirements.txt>
+  
 # Sterke Lekdijk piping tool
 
 Welcome to the Sterke-Lekdijk repo!
