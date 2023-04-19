@@ -75,6 +75,31 @@ class TestPipingCalculation(TestCase):
         calculated_z_uplift_case_1 = self.piping_calculation_case_1.uplift_limit_state
         self.assertEqual(expected_z_uplift_case_1, round(calculated_z_uplift_case_1, 2))
 
+    def test_uplift_limit_state_schematisation_factor(self):
+        piping_calculation_case_1_schematisation_factor = copy.deepcopy(self.piping_calculation_case_1)
+        piping_calculation_case_1_schematisation_factor.schematisation_factor_uplift = 1.3
+
+        expected_z_uplift_case_1 = -1.27
+        calculated_z_uplift_case_1 = piping_calculation_case_1_schematisation_factor.uplift_limit_state
+        self.assertEqual(expected_z_uplift_case_1, round(calculated_z_uplift_case_1, 2))
+
+    def test_uplift_limit_state_safety_factor(self):
+        piping_calculation_case_2_safety_factor = copy.deepcopy(self.piping_calculation_case_2)
+        piping_calculation_case_2_safety_factor.safety_factor_uplift = 2.3
+
+        expected_z_uplift_case_2 = -2.12
+        calculated_z_uplift_case_2 = piping_calculation_case_2_safety_factor.uplift_limit_state
+        self.assertEqual(expected_z_uplift_case_2, round(calculated_z_uplift_case_2, 2))
+
+    def test_uplift_limit_state_schematisation_and_safety_factor(self):
+        piping_calculation_case_1_schematisation_and_safety_factor = copy.deepcopy(self.piping_calculation_case_1)
+        piping_calculation_case_1_schematisation_and_safety_factor.schematisation_factor_uplift = 1.3
+        piping_calculation_case_1_schematisation_and_safety_factor.safety_factor_uplift = 1.8
+
+        expected_z_uplift_case_1 = -1.77
+        calculated_z_uplift_case_1 = piping_calculation_case_1_schematisation_and_safety_factor.uplift_limit_state
+        self.assertEqual(expected_z_uplift_case_1, round(calculated_z_uplift_case_1, 2))
+
     def test_uplift_unity_check(self):
         """ "Unit-test for the unity check of uplift"""
 
@@ -86,6 +111,31 @@ class TestPipingCalculation(TestCase):
         calculated_sf_uplift_case_2 = self.piping_calculation_case_2.uplift_unity_check
         self.assertEqual(expected_sf_uplift_case_2, round(calculated_sf_uplift_case_2, 2))
 
+    def test_uplift_unity_check_schematisation_factor(self):
+        piping_calculation_case_1_schematisation_factor = copy.deepcopy(self.piping_calculation_case_1)
+        piping_calculation_case_1_schematisation_factor.schematisation_factor_uplift = 1.3
+
+        expected_sf_uplift = 0.47
+        calculated_sf_uplift = piping_calculation_case_1_schematisation_factor.uplift_unity_check
+        self.assertEqual(expected_sf_uplift, round(calculated_sf_uplift, 2))
+
+    def test_uplift_unity_check_safety_factor(self):
+        piping_calculation_case_2_safety_factor = copy.deepcopy(self.piping_calculation_case_2)
+        piping_calculation_case_2_safety_factor.safety_factor_uplift = 1.9
+
+        expected_sf_uplift = 0.18
+        calculated_sf_uplift = piping_calculation_case_2_safety_factor.uplift_unity_check
+        self.assertEqual(expected_sf_uplift, round(calculated_sf_uplift, 2))
+
+    def test_uplift_unity_check_schematisation_and_safety_factor(self):
+        piping_calculation_case_2_schematisation_and_safety_factor = copy.deepcopy(self.piping_calculation_case_2)
+        piping_calculation_case_2_schematisation_and_safety_factor.schematisation_factor_uplift = 1.2
+        piping_calculation_case_2_schematisation_and_safety_factor.safety_factor_uplift = 1.9
+
+        expected_sf_uplift = 0.15
+        calculated_sf_uplift = piping_calculation_case_2_schematisation_and_safety_factor.uplift_unity_check
+        self.assertEqual(expected_sf_uplift, round(calculated_sf_uplift, 2))
+
     def test_heave_limit_state(self):
         """Unit-test for the limit state function of heave"""
 
@@ -93,11 +143,61 @@ class TestPipingCalculation(TestCase):
         calculated_z_heave_case_1 = self.piping_calculation_case_1.heave_limit_state
         self.assertEqual(expected_z_heave_case_1, round(calculated_z_heave_case_1, 2))
 
+    def test_heave_limit_state_schematisation_factor(self):
+        piping_calculation_case_1_schematisation_factor = copy.deepcopy(self.piping_calculation_case_1)
+        piping_calculation_case_1_schematisation_factor.schematisation_factor_heave = 1.1
+
+        expected_z_heave_case_1 = -0.93
+        calculated_z_heave_case_1 = piping_calculation_case_1_schematisation_factor.heave_limit_state
+        self.assertEqual(expected_z_heave_case_1, round(calculated_z_heave_case_1, 2))
+
+    def test_heave_limit_state_safety_factor(self):
+        piping_calculation_case_1_safety_factor = copy.deepcopy(self.piping_calculation_case_1)
+        piping_calculation_case_1_safety_factor.safety_factor_heave = 1.1
+
+        expected_z_heave_case_1 = -0.93
+        calculated_z_heave_case_1 = piping_calculation_case_1_safety_factor.heave_limit_state
+        self.assertEqual(expected_z_heave_case_1, round(calculated_z_heave_case_1, 2))
+
+    def test_heave_limit_state_schematisation_and_safety_factor(self):
+        piping_calculation_case_1_schematisation_and_safety_factor = copy.deepcopy(self.piping_calculation_case_1)
+        piping_calculation_case_1_schematisation_and_safety_factor.schematisation_factor_heave = 1.14
+        piping_calculation_case_1_schematisation_and_safety_factor.safety_factor_heave = 1.11
+
+        expected_z_heave_case_1 = -0.96
+        calculated_z_heave_case_1 = piping_calculation_case_1_schematisation_and_safety_factor.heave_limit_state
+        self.assertEqual(expected_z_heave_case_1, round(calculated_z_heave_case_1, 2))
+
     def test_heave_unity_check(self):
         """Unit-test for the unity check for heave"""
         expected_sf_heave_case_1 = 0.25
         calculated_sf_heave_case_1 = self.piping_calculation_case_1.heave_unity_check
         self.assertEqual(expected_sf_heave_case_1, round(calculated_sf_heave_case_1, 2))
+
+    def test_heave_unity_check_schematisation_factor(self):
+        piping_calculation_case_2_schematisation_factor = copy.deepcopy(self.piping_calculation_case_2)
+        piping_calculation_case_2_schematisation_factor.schematisation_factor_heave = 1.03
+
+        expected_sf_heave = 0.23
+        calculated_sf_heave = piping_calculation_case_2_schematisation_factor.heave_unity_check
+        self.assertEqual(expected_sf_heave, round(calculated_sf_heave, 2))
+
+    def test_heave_unity_check_safety_factor(self):
+        piping_calculation_case_2_safety_factor = copy.deepcopy(self.piping_calculation_case_2)
+        piping_calculation_case_2_safety_factor.safety_factor_heave = 1.6
+
+        expected_sf_heave = 0.15
+        calculated_sf_heave = piping_calculation_case_2_safety_factor.heave_unity_check
+        self.assertEqual(expected_sf_heave, round(calculated_sf_heave, 2))
+
+    def test_heave_unity_check_schematisation_and_safety_factor(self):
+        piping_calculation_case_2_schematisation_and_safety_factor = copy.deepcopy(self.piping_calculation_case_2)
+        piping_calculation_case_2_schematisation_and_safety_factor.schematisation_factor_heave = 1.3213
+        piping_calculation_case_2_schematisation_and_safety_factor.safety_factor_heave = 2.3123
+
+        expected_sf_heave = 0.08
+        calculated_sf_heave = piping_calculation_case_2_schematisation_and_safety_factor.heave_unity_check
+        self.assertEqual(expected_sf_heave, round(calculated_sf_heave, 2))
 
     def test_critical_head_difference_sellmeijer(self):
         """ "Unit-test for evaluating the critical head difference using the Sellmeijer equation"""
@@ -119,6 +219,33 @@ class TestPipingCalculation(TestCase):
         expected_sf_erosion_case_1 = 1.94
         calculated_sf_erosion_case_1 = self.piping_calculation_case_1.backward_erosion_unity_check
         self.assertEqual(expected_sf_erosion_case_1, round(calculated_sf_erosion_case_1, 2))
+
+    def test_backward_erosion_unity_check_schematisation_factor(self):
+        piping_calculation_case_1_schematisation_factor = copy.deepcopy(self.piping_calculation_case_1)
+        piping_calculation_case_1_schematisation_factor.schematisation_factor_piping = 1.29999999
+
+        expected_sf_backward_erosion = 1.49
+        calculated_sf_backward_erosion = piping_calculation_case_1_schematisation_factor.backward_erosion_unity_check
+        self.assertEqual(expected_sf_backward_erosion, round(calculated_sf_backward_erosion, 2))
+
+    def test_backward_erosion_unity_check_safety_factor(self):
+        piping_calculation_case_2_safety_factor = copy.deepcopy(self.piping_calculation_case_2)
+        piping_calculation_case_2_safety_factor.safety_factor_piping = 4
+
+        expected_sf_backward_erosion = 0.48
+        calculated_sf_backward_erosion = piping_calculation_case_2_safety_factor.backward_erosion_unity_check
+        self.assertEqual(expected_sf_backward_erosion, round(calculated_sf_backward_erosion, 2))
+
+    def test_backward_erosion_unity_check_schematisation_and_safety_factor(self):
+        piping_calculation_case_1_schematisation_and_safety_factor = copy.deepcopy(self.piping_calculation_case_1)
+        piping_calculation_case_1_schematisation_and_safety_factor.schematisation_factor_piping = 1.15
+        piping_calculation_case_1_schematisation_and_safety_factor.safety_factor_piping = 1.0
+
+        expected_sf_backward_erosion = 1.68
+        calculated_sf_backward_erosion = (
+            piping_calculation_case_1_schematisation_and_safety_factor.backward_erosion_unity_check
+        )
+        self.assertEqual(expected_sf_backward_erosion, round(calculated_sf_backward_erosion, 2))
 
     def test_ditch_2d_effect(self):
         """

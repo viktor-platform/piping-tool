@@ -12,7 +12,7 @@ class CPTFolder:
     def closest_cpt_to_point(self, x: float, y: float):
         if not self._cpt_entities:
             raise UserException(f"Upload at least one cpt to the folder {self.name}")
-        min_dist = 10 ** 9
+        min_dist = 10**9
         closest_cpt = None
         point = np.array([x, y])
         for cpt in self._cpt_entities:

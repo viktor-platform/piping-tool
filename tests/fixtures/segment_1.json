@@ -32,6 +32,14 @@
       "show_ground_model": false,
       "show_cpts": false
     },
+    "safety": {
+      "schematisation_factor_piping": 1.0,
+      "safety_factor_piping": 1.0,
+      "schematisation_factor_uplift": 1.0,
+      "safety_factor_uplift": 1.0,
+      "schematisation_factor_heave": 1.0,
+      "safety_factor_heave": 1.0
+    },
     "materials": {
       "bottom_level_query": -30,
       "table": [
@@ -1146,13 +1154,13 @@
   "minimal_aquifer_thickness": 1,
   "river_level": 5,
   "polder_level": 0,
+  "ditch_water_level": -1,
   "damping_factor": 1,
   "leakage_length_foreland_aquifer_1": null,
   "leakage_length_foreland_aquifer_2": null,
   "leakage_length_hinterland_aquifer_1": null,
   "leakage_length_hinterland_aquifer_2": null,
   "user_phi_avg_hinterland": null,
-  "user_phi_avg_river": null,
   "dike_width": null,
   "exit_point_creation": {
     "general": {

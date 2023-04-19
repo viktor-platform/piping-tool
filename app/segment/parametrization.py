@@ -132,6 +132,34 @@ class SegmentParametrization(Parametrization):
     input_selection.general.show_ground_model = ToggleButton("Toon dekking 3D grondmodel", flex=50, default=False)
     input_selection.general.show_cpts = ToggleButton("Toon CPTs", flex=50, default=False)
 
+    input_selection.safety = Tab("Veiligheid")
+    input_selection.safety.schematisation_factor_piping = NumberField(
+        "Schematiseringsfactor piping $γ_{b,pip}$", min=1.0, max=1.3, default=1.0, num_decimals=1, step=0.1, suffix="-"
+    )
+    input_selection.safety.safety_factor_piping = NumberField(
+        "Veiligheidsfactor piping $γ_{pip}$", min=0.0, default=1.0, num_decimals=1, step=0.1, suffix="-"
+    )
+    input_selection.safety.lb1 = LineBreak()
+    input_selection.safety.schematisation_factor_uplift = NumberField(
+        "Schematiseringsfactor opbarsten $γ_{b,up}$",
+        min=1.0,
+        max=1.3,
+        default=1.0,
+        num_decimals=1,
+        step=0.1,
+        suffix="-",
+    )
+    input_selection.safety.safety_factor_uplift = NumberField(
+        "Veiligheidsfactor opbarsten $γ_{up}$", min=0.0, default=1.0, num_decimals=1, step=0.1, suffix="-"
+    )
+    input_selection.safety.lb2 = LineBreak()
+    input_selection.safety.schematisation_factor_heave = NumberField(
+        "Schematiseringsfactor heave $γ_{b,he}$", min=1.0, max=1.3, default=1.0, num_decimals=1, step=0.1, suffix="-"
+    )
+    input_selection.safety.safety_factor_heave = NumberField(
+        "Veiligheidsfactor heave $γ_{he}$", min=0.0, default=1.0, num_decimals=1, step=0.1, suffix="-"
+    )
+
     input_selection.materials = Tab("Materialen")
     input_selection.materials.fetch_tables_from_project = SetParamsButton(
         "Reset tabellen naar de algemene dijkwaarden", "fetch_table_from_dike"
@@ -299,10 +327,19 @@ class SegmentParametrization(Parametrization):
         name="geohydrology_method",
     )
     soil_schematization.geohydrology.general.river_level = NumberField(
-        "Rivier waterpeil", suffix="m NAP", flex=50, name="river_level"
+        "Rivier waterpeil", suffix="m NAP", flex=30, name="river_level"
     )
     soil_schematization.geohydrology.general.polder_level = NumberField(
-        "Polderpeil", suffix="m NAP", flex=50, name="polder_level"
+        "Waterstand binnendijks tijdens hoogwater", suffix="m NAP", flex=30, name="polder_level"
+    )
+    soil_schematization.geohydrology.general.ditch_water_level = NumberField(
+        "Waterstand voor slootbodem",
+        suffix="m NAP",
+        flex=35,
+        name="ditch_water_level",
+        description="De slootbodem wordt bepaald aan de hand van een onderhoudsdiepte t.o.v. "
+        "een referentiewaterstand. Meestal wordt hiervoor het winterpeil gebruikt. "
+        "Vul hier deze referentiewaterstand in.",
     )
     soil_schematization.geohydrology.level0 = Section("Niveau 0")
     soil_schematization.geohydrology.level0.hydraulic_head = NumberField(
@@ -318,16 +355,10 @@ class SegmentParametrization(Parametrization):
     soil_schematization.geohydrology.level1.overwrite_phi_avg = ToggleButton("Overwrite phi_avg", default=False)
     soil_schematization.geohydrology.level1.lb = LineBreak()
     soil_schematization.geohydrology.level1.user_phi_avg_hinterland = NumberField(
-        "Achterland phi_avg",
+        "Referentie polderpeil tbhv bepalen dempingsfactor",
         suffix="m",
         visible=Lookup("soil_schematization.geohydrology.level1.overwrite_phi_avg"),
         name="user_phi_avg_hinterland",
-    )
-    soil_schematization.geohydrology.level1.user_phi_avg_river = NumberField(
-        "Rivier phi_avg",
-        suffix="m",
-        visible=Lookup("soil_schematization.geohydrology.level1.overwrite_phi_avg"),
-        name="user_phi_avg_river",
     )
     soil_schematization.geohydrology.level2 = Section("Niveau 2", description="gebaseerd op leklengte")
     soil_schematization.geohydrology.level2.dyke_width = NumberField("Dijkbreedte", suffix="m", name="dike_width")

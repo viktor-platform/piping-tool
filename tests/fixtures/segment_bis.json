@@ -34,6 +34,14 @@
       "show_ground_model": false,
       "show_cpts": false
     },
+    "safety": {
+      "schematisation_factor_piping": 1.0,
+      "safety_factor_piping": 1.0,
+      "schematisation_factor_uplift": 1.0,
+      "safety_factor_uplift": 1.0,
+      "schematisation_factor_heave": 1.0,
+      "safety_factor_heave": 1.0
+    },
     "materials": {
       "bottom_level_query": -30,
       "table": [
@@ -210,6 +218,7 @@
   "geohydrology_method": "1",
   "river_level": 0,
   "polder_level": -1,
+  "ditch_water_level": -1,
   "damping_factor": 1,
   "dike_width": 5,
   "soil_schematization": {

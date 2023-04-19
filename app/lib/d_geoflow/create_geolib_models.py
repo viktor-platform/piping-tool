@@ -48,7 +48,7 @@ def get_geolib_points_from_viktor_polygon(polygon: ViktorPolygon) -> List[Geolib
 
 
 def get_boundary_condition_contour(line: Polyline) -> List[GeolibPoint]:
-    """Takes a viktor polyline and returns a list of Geolib points for a boundary of the DGeoflow model. """
+    """Takes a viktor polyline and returns a list of Geolib points for a boundary of the DGeoflow model."""
     return [
         GeolibPoint(x=round(p.x, DSETTLEMENT_POINT_PRECISION), y=0, z=round(p.y, DSETTLEMENT_POINT_PRECISION))
         for p in line.points
@@ -56,7 +56,7 @@ def get_boundary_condition_contour(line: Polyline) -> List[GeolibPoint]:
 
 
 def generate_dstability_model(soil_geometry: SoilGeometry, ditch_data: Optional[List[dict]] = None) -> DStabilityModel:
-    """create a DStability model that only contains a geometry and the soils """
+    """create a DStability model that only contains a geometry and the soils"""
     dm = DStabilityModel()
     transfer_layer_properties_to_soil(soil_geometry.soil_layout)
 
@@ -81,7 +81,7 @@ def generate_dstability_model(soil_geometry: SoilGeometry, ditch_data: Optional[
 
 
 def generate_dgeoflow_model(soil_geometry: SoilGeometry, dike: Dyke, ditch_data: List[dict] = None) -> DGeoflowModel:
-    """create a DGeoflow model """
+    """create a DGeoflow model"""
 
     dm = DGeoflowModel()
     transfer_layer_properties_to_soil(soil_geometry.soil_layout)

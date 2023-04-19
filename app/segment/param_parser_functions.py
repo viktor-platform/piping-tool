@@ -77,6 +77,8 @@ def get_piping_hydro_parameters(params: Munch) -> dict:
         raise UserException("Rivierpeil ontbreekt")
     if params.polder_level is None:
         raise UserException("Polderpeil ontbreekt")
+    if params.ditch_water_level is None:
+        raise UserException("Waterstand voor slootbodem ontbreekt")
     if params.geohydrology_method == "2":
         if not params.soil_schematization.geohydrology.level2.leakage_length_array:
             raise UserException("Geohydro level 2: Vuul de leklength tabel.")  # TODO TRANSLATE
@@ -88,8 +90,15 @@ def get_piping_hydro_parameters(params: Munch) -> dict:
         raise UserException("Geohydromodel level 3 is not yet implemented.")  # TODO TRANSLATE
 
     return {
+        "schematisation_factor_piping": params.input_selection.safety.schematisation_factor_piping,
+        "safety_factor_piping": params.input_selection.safety.safety_factor_piping,
+        "schematisation_factor_uplift": params.input_selection.safety.schematisation_factor_uplift,
+        "safety_factor_uplift": params.input_selection.safety.safety_factor_uplift,
+        "schematisation_factor_heave": params.input_selection.safety.schematisation_factor_heave,
+        "safety_factor_heave": params.input_selection.safety.safety_factor_heave,
         "river_level": params.river_level,
         "polder_level": params.polder_level,
+        "ditch_water_level": params.ditch_water_level,
         "damping_factor": params.damping_factor,
         "dike_width": params.dike_width,
         "geohydrologic_model": params.geohydrology_method,
@@ -97,7 +106,6 @@ def get_piping_hydro_parameters(params: Munch) -> dict:
         "user_hydraulic_head": params.soil_schematization.geohydrology.level0.hydraulic_head,
         "overwrite_phi_avg": params.soil_schematization.geohydrology.level1.overwrite_phi_avg,
         "user_phi_avg_hinterland": params.user_phi_avg_hinterland,
-        "user_phi_avg_river": params.user_phi_avg_river,
     }
 
 

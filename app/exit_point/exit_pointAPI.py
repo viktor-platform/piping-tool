@@ -48,6 +48,14 @@ class ExitPointAPI(APIHelper):
             raise UserException("Geen riverpeil gevonden voor dit segment, onder geohydrologie: algemeen")
         return river_level  # m NAP
 
+    def get_ditch_water_level(self):
+        ditch_water_level = self.get_segment_params().get("ditch_water_level")
+        if ditch_water_level is None:
+            raise UserException(
+                "Geen waterstand voor slootbodem gevonden voor dit segment, onder geohydrologie: algemeen"
+            )
+        return ditch_water_level  # m NAP
+
     def get_ditches(self) -> List[dict]:
         """Return the params of the selected ditch entity"""
         segment_params = self.get_segment_params()

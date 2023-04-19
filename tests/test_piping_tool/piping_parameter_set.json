@@ -40,8 +40,15 @@
         }
       }
     ],
+    "schematisation_factor_piping": 1.0,
+    "safety_factor_piping": 1.0,
+    "schematisation_factor_uplift": 1.0,
+    "safety_factor_uplift": 1.0,
+    "schematisation_factor_heave": 1.0,
+    "safety_factor_heave": 1.0,
     "polder_level": 2,
     "river_level": 5,
+    "ditch_water_level": 0,
     "damping_factor": 0.8,
     "leakage_length_hinterland": 500,
     "leakage_length_foreland": 50,
@@ -91,8 +98,15 @@
         }
       }
     ],
+    "schematisation_factor_piping": 1.0,
+    "safety_factor_piping": 1.0,
+    "schematisation_factor_uplift": 1.0,
+    "safety_factor_uplift": 1.0,
+    "schematisation_factor_heave": 1.0,
+    "safety_factor_heave": 1.0,
     "polder_level": 2,
     "river_level": 5,
+    "ditch_water_level": 0,
     "damping_factor": 0.8,
     "leakage_length_hinterland": 500,
     "leakage_length_foreland": 50,

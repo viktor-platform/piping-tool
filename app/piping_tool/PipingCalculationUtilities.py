@@ -31,8 +31,15 @@ from viktor import UserException
 class PipingCalculation:
     def __init__(
         self,
+        schematisation_factor_piping: float,
+        safety_factor_piping: float,
+        schematisation_factor_uplift: float,
+        safety_factor_uplift: float,
+        schematisation_factor_heave: float,
+        safety_factor_heave: float,
         polder_level: float,
         river_level: float,
+        ditch_water_level: float,
         damping_factor: float,
         leakage_length_hinterland: float,
         leakage_length_foreland: float,
@@ -44,11 +51,17 @@ class PipingCalculation:
         ditch: Optional[Ditch] = None,
         aquifer_hydraulic_head_hinterland: Optional[float] = None,
         user_phi_avg_hinterland: Optional[float] = None,
-        user_phi_avg_river: Optional[float] = None,
     ):
         """
+        :param schematisation_factor_piping: schematisation factor to be used in piping uc check
+        :param safety_factor_piping: schematisation factor to be used in piping uc check
+        :param schematisation_factor_uplift: schematisation factor to be used in uplift uc check
+        :param safety_factor_uplift: safety factor to be used in uplift uc check
+        :param schematisation_factor_heave: schematisation factor to be used in heave uc check
+        :param safety_factor_heave: safety factor to be used in heave uc check
         :param polder_level:
         :param river_level: level of the river in m NAP
+        :param ditch_water_level: level of water in ditches
         :param damping_factor: damping factor for the river head
         :param leakage_length_foreland: Leakage length to the foreland side in m
         :param leakage_length_hinterland: Leakage length to the hinterland side in m
@@ -65,8 +78,15 @@ class PipingCalculation:
         :return: negative or positive float
         """
         self.soil_layout = munchify(soil_layout)
+        self.schematisation_factor_piping = schematisation_factor_piping
+        self.safety_factor_piping = safety_factor_piping
+        self.schematisation_factor_uplift = schematisation_factor_uplift
+        self.safety_factor_uplift = safety_factor_uplift
+        self.schematisation_factor_heave = schematisation_factor_heave
+        self.safety_factor_heave = safety_factor_heave
         self.polder_level = polder_level
         self.river_level = river_level
+        self.ditch_water_level = ditch_water_level
         self.damping_factor = damping_factor
         self.leakage_length_hinterland = leakage_length_hinterland
         self.leakage_length_foreland = leakage_length_foreland
@@ -78,7 +98,6 @@ class PipingCalculation:
         self.is_ditch = bool(self.ditch)
         self.aquifer_hydraulic_head_hinterland = aquifer_hydraulic_head_hinterland
         self.user_phi_exit_average_hinterland = user_phi_avg_hinterland
-        self.user_phi_exit_average_river = user_phi_avg_river
         if self.is_ditch:
             self.is_ditch_wet = self.ditch.is_wet
         else:
@@ -123,14 +142,6 @@ class PipingCalculation:
         return self.user_phi_exit_average_hinterland
 
     @property
-    def phi_exit_average_river(self):
-        """The polder level is assumed to be the hydraulic head in the aquifer at the river under regular
-        circumstances."""
-        if self.user_phi_exit_average_river is None:
-            return self.polder_level
-        return self.user_phi_exit_average_river
-
-    @property
     def uplift_limit_state(self) -> float:
         """
         Return the z limit state score for uplift at a specific exit point. Negative z-score is failure, positive is
@@ -139,7 +150,9 @@ class PipingCalculation:
         potential_uplift = self.calc_uplift_critical_potential_difference
         water_level_exit_point = self.calc_h_exit
         aquifer_hydraulic_head = self.calc_phi_exit
-        return potential_uplift - (aquifer_hydraulic_head - water_level_exit_point)
+        return (potential_uplift / (self.schematisation_factor_uplift * self.safety_factor_uplift)) - (
+            aquifer_hydraulic_head - water_level_exit_point
+        )
 
     @property
     def uplift_unity_check(self) -> float:
@@ -149,7 +162,9 @@ class PipingCalculation:
         potential_uplift = self.calc_uplift_critical_potential_difference
         water_level_exit_point = self.calc_h_exit
         aquifer_hydraulic_head = self.calc_phi_exit
-        return potential_uplift / (aquifer_hydraulic_head - water_level_exit_point)
+        return (potential_uplift / (self.schematisation_factor_uplift * self.safety_factor_uplift)) / (
+            aquifer_hydraulic_head - water_level_exit_point
+        )
 
     @property
     def heave_limit_state(self) -> float:
@@ -161,7 +176,9 @@ class PipingCalculation:
         aquifer_hydraulic_head = self.calc_phi_exit
         cover_thickness = self.get_cover_layer_properties["thickness"]
 
-        return CRITICAL_HEAVE_GRADIENT - (aquifer_hydraulic_head - water_level_exit_point) / cover_thickness
+        return (CRITICAL_HEAVE_GRADIENT / (self.schematisation_factor_heave * self.safety_factor_heave)) - (
+            aquifer_hydraulic_head - water_level_exit_point
+        ) / cover_thickness
 
     @property
     def heave_unity_check(self) -> float:
@@ -174,7 +191,9 @@ class PipingCalculation:
 
         if aquifer_hydraulic_head - water_level_exit_point == 0:
             return Inf
-        return CRITICAL_HEAVE_GRADIENT / ((aquifer_hydraulic_head - water_level_exit_point) / cover_thickness)
+        return (CRITICAL_HEAVE_GRADIENT / (self.schematisation_factor_heave * self.safety_factor_heave)) / (
+            (aquifer_hydraulic_head - water_level_exit_point) / cover_thickness
+        )
 
     @property
     def backward_erosion_unity_check(self) -> float:
@@ -182,7 +201,14 @@ class PipingCalculation:
         Return the unity check for backwards erosion at a specific exit point.
         """
         self.validator_sellmeijer()
-        return M_P * self.calc_critical_head_difference_sellmeijer / self.calc_reduced_head_difference
+        return (
+            M_P
+            * (
+                self.calc_critical_head_difference_sellmeijer
+                / (self.safety_factor_piping * self.schematisation_factor_piping)
+            )
+            / self.calc_reduced_head_difference
+        )
 
     def get_piping_summary_results(self) -> dict:
         column_names = PipingDataFrameColumns
@@ -358,7 +384,9 @@ class PipingCalculation:
     @property
     def calc_phi_exit_level_1(self) -> float:
         """Calculate the hydraulic head in the aquifer at the exit point according to the Geohydrologic model 1"""
-        return self.phi_exit_average_hinterland + self.damping_factor * (self.river_level - self.phi_exit_average_river)
+        return self.phi_exit_average_hinterland + self.damping_factor * (
+            self.river_level - self.phi_exit_average_hinterland
+        )
 
     @property
     def calc_phi_exit_level_2(self) -> float:

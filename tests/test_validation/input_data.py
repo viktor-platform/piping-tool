@@ -1,8 +1,15 @@
 from app.ditch.model import Ditch
 
 uplift_parameters_exit_point_28_first_aquifer = {
+    "schematisation_factor_piping": 1.0,
+    "safety_factor_piping": 1.0,
+    "schematisation_factor_uplift": 1.0,
+    "safety_factor_uplift": 1.0,
+    "schematisation_factor_heave": 1.0,
+    "safety_factor_heave": 1.0,
     "river_level": 5.5,
     "polder_level": -0.2,
+    "ditch_water_level": -0.2,
     "damping_factor": 0.8,
     "dike_width": 25,
     "geohydrologic_model": "1",
@@ -11,7 +18,6 @@ uplift_parameters_exit_point_28_first_aquifer = {
     "ditch": None,
     "aquifer_hydraulic_head_hinterland": 0.8,
     "user_phi_avg_hinterland": None,
-    "user_phi_avg_river": None,
     "soil_layout": [
         {
             "soil": {"name": "cover_layer", "color": (192, 192, 192), "properties": {"ui_name": "Deklaag"}},
@@ -44,8 +50,15 @@ uplift_parameters_exit_point_28_first_aquifer = {
 }
 
 uplift_parameters_exit_point_28_second_aquifer = {
+    "schematisation_factor_piping": 1.0,
+    "safety_factor_piping": 1.0,
+    "schematisation_factor_uplift": 1.0,
+    "safety_factor_uplift": 1.0,
+    "schematisation_factor_heave": 1.0,
+    "safety_factor_heave": 1.0,
     "river_level": 5.5,
     "polder_level": -0.2,
+    "ditch_water_level": -0.2,
     "damping_factor": 0.8,
     "dike_width": 25,
     "geohydrologic_model": "1",
@@ -54,7 +67,6 @@ uplift_parameters_exit_point_28_second_aquifer = {
     "ditch": None,
     "aquifer_hydraulic_head_hinterland": 0.8,
     "user_phi_avg_hinterland": None,
-    "user_phi_avg_river": None,
     "soil_layout": [
         {
             "soil": {"name": "cover_layer", "color": (192, 192, 192), "properties": {"ui_name": "Deklaag"}},
@@ -133,8 +145,15 @@ ditch_1 = Ditch(
     talu_slope=ditch_param_1.get("talu_slope"),
 )
 piping_parameters_ditch_1 = {
+    "schematisation_factor_piping": 1.0,
+    "safety_factor_piping": 1.0,
+    "schematisation_factor_uplift": 1.0,
+    "safety_factor_uplift": 1.0,
+    "schematisation_factor_heave": 1.0,
+    "safety_factor_heave": 1.0,
     "river_level": 5.5,
     "polder_level": 1.8,
+    "ditch_water_level": 1.0,
     "damping_factor": 1,
     "dike_width": None,
     "geohydrologic_model": "0",
@@ -143,7 +162,6 @@ piping_parameters_ditch_1 = {
     "ditch": ditch_1,
     "aquifer_hydraulic_head_hinterland": 5.5,
     "user_phi_avg_hinterland": None,
-    "user_phi_avg_river": None,
     "soil_layout": [
         {
             "soil": {"name": "cover_layer", "color": (192, 192, 192), "properties": {"ui_name": "Deklaag"}},
