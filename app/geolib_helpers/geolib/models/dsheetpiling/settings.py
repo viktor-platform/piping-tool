@@ -88,7 +88,7 @@ class SheetPilingElementMaterialType(IntEnum):
 
 
 class CalculationType(IntEnum):
-    """ Calculation type for D-SheetPiling"""
+    """Calculation type for D-SheetPiling"""
 
     STANDARD = 0
     DESIGN_SHEETPILING_LENGTH = 1

@@ -38,8 +38,15 @@ class ExitPointProperties:
 
     @uplift_parameters.setter
     def uplift_parameters(self, parameter_dict: dict):
+        self._uplift_parameters["schematisation_factor_piping"] = parameter_dict.get("schematisation_factor_piping")
+        self._uplift_parameters["safety_factor_piping"] = parameter_dict.get("safety_factor_piping")
+        self._uplift_parameters["schematisation_factor_uplift"] = parameter_dict.get("schematisation_factor_uplift")
+        self._uplift_parameters["safety_factor_uplift"] = parameter_dict.get("safety_factor_uplift")
+        self._uplift_parameters["schematisation_factor_heave"] = parameter_dict.get("schematisation_factor_heave")
+        self._uplift_parameters["safety_factor_heave"] = parameter_dict.get("safety_factor_heave")
         self._uplift_parameters["river_level"] = parameter_dict.get("river_level")
         self._uplift_parameters["polder_level"] = parameter_dict.get("polder_level")
+        self._uplift_parameters["ditch_water_level"] = parameter_dict.get("ditch_water_level")
         self._uplift_parameters["damping_factor"] = parameter_dict.get("damping_factor")
         self._uplift_parameters["dike_width"] = parameter_dict.get("dike_width")
         self._uplift_parameters["geohydrologic_model"] = parameter_dict.get("geohydrologic_model")
@@ -49,9 +56,6 @@ class ExitPointProperties:
         self._uplift_parameters["aquifer_hydraulic_head_hinterland"] = parameter_dict.get("user_hydraulic_head")
         self._uplift_parameters["user_phi_avg_hinterland"] = (
             parameter_dict.get("user_phi_avg_hinterland") if parameter_dict.get("overwrite_phi_avg") else None
-        )
-        self._uplift_parameters["user_phi_avg_river"] = (
-            parameter_dict.get("user_phi_avg_river") if parameter_dict.get("overwrite_phi_avg") else None
         )
 
     def get_exit_point_summary_piping_results(self, piping_parameters: dict) -> List[dict]:

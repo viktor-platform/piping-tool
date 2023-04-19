@@ -42,7 +42,6 @@ class TestDitchModel(unittest.TestCase):
         right_point_top = {"x": 6, "z": 0}
         z_aquifer = -5
         ditch = Ditch(left_point_top, left_point_bottom, right_point_bottom, right_point_top, True, talu_slope=2)
-        print(ditch.h3(z_aquifer))
 
         assert ditch.large_b == 4
         assert ditch.small_b == 2
@@ -57,7 +56,6 @@ class TestDitchModel(unittest.TestCase):
         right_point_top = {"x": 6, "z": 0}
         z_aquifer = -5
         ditch = Ditch(left_point_top, left_point_bottom, right_point_bottom, right_point_top, True, talu_slope=2)
-        print(ditch.h3(z_aquifer))
         assert ditch.large_b == 3.5
         assert ditch.small_b == 2
         assert ditch.h1(z_aquifer) == 5

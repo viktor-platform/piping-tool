@@ -98,7 +98,7 @@ def request_data(bbox: List[float], coverage: str = "ahn3_05m_dtm", resolution: 
     width = (bbox[2] - bbox[0]) / resolution
     height = (bbox[3] - bbox[1]) / resolution
 
-    url = "https://geodata.nationaalgeoregister.nl/ahn3/wcs"
+    url = "https://service.pdok.nl/rws/ahn3/wcs/v1_0"
     params = dict(
         service="WCS",
         version="1.0.0",

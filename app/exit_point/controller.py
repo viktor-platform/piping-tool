@@ -92,6 +92,7 @@ class Controller(ViktorController):
         )
         water_level = self.get_api(entity_id).get_polder_level()
         river_level = self.get_api(entity_id).get_river_level()
+        ditch_water_level = self.get_api(entity_id).get_ditch_water_level()
 
         dyke = self.get_api(entity_id).get_dyke()
         exit_point = Point(params.exit_point_data.x_coordinate, params.exit_point_data.y_coordinate)
@@ -100,12 +101,24 @@ class Controller(ViktorController):
         exit_point_x_value = soil_geom.start_point.distance(exit_point) - crest_line_x_value
 
         fig.add_hline(
+            y=ditch_water_level,
+            line_width=2,
+            line_color="blue",
+            name="polderpeil",
+            annotation=dict(
+                text=f"Waterstand sloot {round(ditch_water_level)}m NAP",
+                bgcolor="rgba(255,255,255,0.5)",
+                bordercolor="blue",
+                borderwidth=2,
+            ),
+        )
+        fig.add_hline(
             y=water_level,
             line_width=2,
             line_color="blue",
             name="polderpeil",
             annotation=dict(
-                text=f"Polderpeil <br>{round(water_level)}m NAP",
+                text=f"Waterstand binnendijks <br> tijdens hoogwater <br>{round(water_level)}m NAP",
                 bgcolor="rgba(255,255,255,0.5)",
                 bordercolor="blue",
                 borderwidth=2,
@@ -227,6 +240,7 @@ class Controller(ViktorController):
         dyke = self.get_api(entity_id).get_dyke()
         polder_level = self.get_api(entity_id).get_polder_level()
         river_level = self.get_api(entity_id).get_river_level()
+        ditch_water_level = self.get_api(entity_id).get_ditch_water_level()
 
         exit_point = Point(params.exit_point_data.x_coordinate, params.exit_point_data.y_coordinate)
         projected_exit_point_on_entry_line = get_exit_point_projection_on_entry_line(
@@ -263,6 +277,7 @@ class Controller(ViktorController):
             params.cross_section.element_size,
             polder_level,
             river_level,
+            ditch_water_level,
         )
 
     def download_flox(self, params: Munch, entity_id: int, **kwargs) -> DownloadResult:

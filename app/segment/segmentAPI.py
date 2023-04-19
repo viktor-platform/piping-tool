@@ -110,7 +110,7 @@ class SegmentAPI(APIHelper):
         if segment_params.segment_polygon is None:
             raise UserException(
                 "Geen traject voor het dijkvak: vul start en eind kilometrering, en click op 'Update traject'"
-            )  # TODO TRANSLATE
+            )
         polygon = convert_geopolygon_to_shapely_polgon(segment_params.segment_polygon)
         segment_trajectory = polygon.intersection(dyke.interpolated_trajectory())
 

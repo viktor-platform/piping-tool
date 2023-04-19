@@ -135,6 +135,7 @@ class SoilGeometry:
         element_size: float,
         polder_level: float,
         river_level: float,
+        ditch_water_level: float,
     ):
 
         self.all_bathymetry_points = bathymetry_geopoints
@@ -145,6 +146,7 @@ class SoilGeometry:
         self.trajectory = LineString([self.start_point, self.end_point])
         self.polder_level = polder_level
         self.river_level = river_level
+        self.ditch_water_level = ditch_water_level
         self.element_size = element_size
 
     @property
@@ -213,6 +215,6 @@ class SoilGeometry:
                 left_edge = Point(ditch_poly.intersection(self.trajectory).coords[0])
                 right_edge = Point(ditch_poly.intersection(self.trajectory).coords[-1])
                 intersecting_ditches.append(
-                    Ditch.from_intersection(left_edge, right_edge, ditch, self.start_point, self.polder_level)
+                    Ditch.from_intersection(left_edge, right_edge, ditch, self.start_point, self.ditch_water_level)
                 )
         return intersecting_ditches

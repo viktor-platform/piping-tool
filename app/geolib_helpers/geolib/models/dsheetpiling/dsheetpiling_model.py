@@ -173,7 +173,7 @@ class DSheetPilingModel(BaseModel):
         self.filename = filename
 
     def _is_calculation_per_stage_required(self) -> bool:
-        """ Function that checks if [CALCULATION PER STAGE] can be modified. This is true for a verify sheet-piling calculation and method B."""
+        """Function that checks if [CALCULATION PER STAGE] can be modified. This is true for a verify sheet-piling calculation and method B."""
         _map_method_b_available = {
             VerifyType.CUR: self.datastructure.input_data.calculation_options.curmethod,
             VerifyType.EC7NL: self.datastructure.input_data.calculation_options.ec7nlmethod,
@@ -474,7 +474,7 @@ class DSheetPilingModel(BaseModel):
             raise ValueError(f"support should be SpringSupport or RigidSupport, received {support}")
 
     def add_soil(self, soil: Soil) -> str:
-        """ Soil is converted in the internal structure and added in soil_collection."""
+        """Soil is converted in the internal structure and added in soil_collection."""
         soil_internal = soil._to_dsheetpiling()
         new_soil = self.datastructure.input_data.soil_collection.add_soil_if_unique(soil_internal)
         return new_soil.name

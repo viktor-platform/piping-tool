@@ -533,10 +533,10 @@ class Controller(ViktorController):  # pylint: disable=too-many-public-methods
         exit_point_locations = segment.get_all_draft_exit_point_locations()
         materials_tables = get_materials_tables(params)
 
-        if params.polder_level is not None:
-            polder_level = params.polder_level
+        if params.ditch_water_level is not None:
+            ditch_water_level = params.ditch_water_level
         else:
-            raise UserException("Polderpeil dient aangegeven te worden onder de Geohydrologie tab.")
+            raise UserException("Waterstand voor slootbodem dient aangegeven te worden onder de Geohydrologie tab.")
 
         # Loop over each exit point
         for index, (tno_soil_layout, x, y, z) in enumerate(
@@ -562,7 +562,9 @@ class Controller(ViktorController):  # pylint: disable=too-many-public-methods
             if check_ditch_bool is True:
                 try:
                     if type_ditch == "wet":
-                        ditch_points, talu_slope = get_ditch_points_data(params.segment_ditches, point, polder_level)
+                        ditch_points, talu_slope = get_ditch_points_data(
+                            params.segment_ditches, point, ditch_water_level
+                        )
                         ditch_param = {
                             "ditch_points": ditch_points,
                             "talu_slope": talu_slope,
@@ -570,7 +572,7 @@ class Controller(ViktorController):  # pylint: disable=too-many-public-methods
                         }
                     else:
                         ditch_points, talu_slope = get_ditch_points_data(
-                            params.segment_dry_ditches, point, polder_level
+                            params.segment_dry_ditches, point, ditch_water_level
                         )
                         ditch_param = {
                             "ditch_points": ditch_points,
@@ -865,30 +867,6 @@ class Controller(ViktorController):  # pylint: disable=too-many-public-methods
     ####################################################################################################################
     #                                                   GENERIC FUNCTIONS                                              #
     ####################################################################################################################
-
-    @staticmethod
-    def get_uplifting_parameters(params: Munch):
-
-        if params.river_level is None:
-            raise UserException("Rivierpeil ontbreekt")
-        if params.polder_level is None:
-            raise UserException("Polderpeil ontbreekt")
-        if params.geohydrology_method == "2":
-            if params.leakage_length_hinterland is None:
-                raise UserException("Leklengte achterland ontbreekt")
-            if params.leakage_length_foreland is None:
-                raise UserException("Leklengte voorland ontbreekt")
-            if params.dike_width is None:
-                raise UserException("Dijkdikte ontbreekt")
-        return {
-            "river_level": params.river_level,
-            "polder_level": params.polder_level,
-            "damping_factor": params.damping_factor,
-            "dike_width": params.dike_width,
-            "geohydrologic_model": params.geohydrology_method,
-            "leakage_length_hinterland": params.leakage_length_hinterland,
-            "leakage_length_foreland": params.leakage_length_foreland,
-        }
 
     def get_segment(self, entity_id: int, segment_params: Munch) -> Segment:
         """create Segment Object for this entity"""

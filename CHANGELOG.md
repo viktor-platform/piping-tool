@@ -19,6 +19,34 @@ None.
 ### Fixed
 None.
 
+## v1.2.2 [18/04/2023]
+### Changed
+- (#270) updated link to user manual in welcome text
+
+## v1.2.1 [27/02/2023]
+### Fixed
+- (#269) update link of AHN3 dataset to new location at pdok service
+
+## v1.2.0 [27/10/2022]
+### Added
+- (#268) use partial safety factors supplied by user in segment editor in calculation of uc's and limit states for piping, uplift and heave
+
+## v1.1.1 [25/10/2022]
+### Fixed
+- (#267) corrected calculation of hydraulic head to use phi_exit_average_hinterland
+- (#267) reverted calculation of water level at exit point to use polder_level
+
+## v1.1.0 [18/10/2022]
+### Added
+- (#264) added new field waterstand voor slootbodem, use value for drawing ditches and calculating ditch bottom
+
+### Changed
+- (#264) renamed original polder_peil field to waterstand binnendijks tijdens hoogwater
+- (#264) renamed achter phi_avg field to referentie polderpeil tbhv bepalen dempingsfactor
+
+### Removed
+- (#264) removed river_phi_avg field, instead always use river_level
+
 ## v1.0.2 [30/09/2022]
 ### Added
 - (#266) Added TNO model cutting and map visualizations for areas ICU and JAV
